@@ -28,8 +28,8 @@ class LoginSection extends StatelessWidget {
             controller: emailController,
             labelText: StringManager.yourEmail,
             textType: TextInputType.emailAddress,
-            validator: (input){
-              if(input!.isEmpty){
+            validator: (input) {
+              if (input!.isEmpty) {
                 return "fill your email";
               }
               return null;
@@ -38,28 +38,29 @@ class LoginSection extends StatelessWidget {
           SizeManager.s24.verticalSpace,
           CustomTextFormField(
             controller: passwordController,
-            labelText:  StringManager.password,
+            labelText: StringManager.password,
             textType: TextInputType.visiblePassword,
-            validator: (input){
-              if(input!.isEmpty){
+            validator: (input) {
+              if (input!.isEmpty) {
                 return "fill your password";
               }
               return null;
             },
           ),
           SizeManager.s12.verticalSpace,
-
-           CustomTextButton(text: StringManager.forgetPassword, onTap:(){
-            print("tap");
-          },),
+          CustomTextButton(
+            text: StringManager.forgetPassword,
+            onTap: () {
+              print("tap");
+            },
+          ),
           SizeManager.s12.verticalSpace,
-
           CustomPrimaryElevatedBtn(
             onPressed: () {
-              if(formKey.currentState!.validate()){
-                  print("validate");
-                  AppAuth.login(emailController.text, passwordController.text, context);
-
+              if (formKey.currentState!.validate()) {
+                print("validate");
+                AppAuth.login(
+                    emailController.text, passwordController.text, context);
               }
             },
             buttonTxt: StringManager.logIn,
@@ -72,17 +73,17 @@ class LoginSection extends StatelessWidget {
   }
 }
 
-
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField(
+  const CustomTextFormField(
       {super.key,
       required this.labelText,
       this.suffixIcon,
       required this.controller,
       this.isSecret = false,
-      required this.textType, required this.validator});
+      required this.textType,
+      required this.validator});
 
-  TextEditingController controller;
+  final TextEditingController controller;
 
   final String labelText;
   final Widget? suffixIcon;
@@ -94,6 +95,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       validator: validator,
       controller: controller,
+      obscureText: isSecret,
       cursorColor: ColorManager.lightGrey,
       keyboardType: textType,
       decoration: InputDecoration(

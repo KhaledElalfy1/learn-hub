@@ -12,36 +12,35 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: ColorManager.greyGrey,
       body: SizedBox(
         width: 1.sw,
-        child:  Column(
+        child: Column(
           children: [
-            const HeaderSection(title: 'Sign Up',description: 'Enter your details below & free sign up',),
+            const HeaderSection(
+              title: 'Sign Up',
+              description: 'Enter your details below & free sign up',
+            ),
             Expanded(
               child: Container(
                 width: 1.sw,
-                padding:  EdgeInsets.symmetric(horizontal: SizeManager.s24.w,vertical: SizeManager.s32),
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeManager.s24.w, vertical: SizeManager.s32),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(SizeManager.s12.r),
-                    )
-                ),
+                    )),
                 child: Column(
                   children: [
-                    RegisterSection(),
+                  const  RegisterSection(),
                     SizeManager.s24.verticalSpace,
-
-                     const FooterSection(),
+                    const FooterSection(),
                   ],
                 ),
-
-
               ),
             ),
-
           ],
         ),
       ),
