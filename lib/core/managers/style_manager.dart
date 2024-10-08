@@ -18,7 +18,7 @@ class StyleManager {
   static TextStyle titlePoppins(
           {double? fontSize, Color? color, FontWeight? fontWeight}) =>
       GoogleFonts.poppins(
-          fontSize: fontSize ?? 22.sp,
+          fontSize: fontSize ?? 28.sp,
           color: color,
           fontWeight: fontWeight ?? FontWeight.bold);
 }

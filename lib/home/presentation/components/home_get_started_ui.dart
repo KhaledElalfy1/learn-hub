@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learnhub/core/managers/color_manager.dart';
 import 'package:learnhub/core/managers/size_manager.dart';
 
-final TotalTime = 46;
+const totalTime = 46;
 
 class HomeGetStartedUi extends StatelessWidget {
   const HomeGetStartedUi({super.key});
@@ -48,7 +48,7 @@ class HomeGetStartedUi extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "$TotalTime min",
+                      "$totalTime min",
                       style: TextStyle(
                           fontSize: SizeManager.s32,
                           fontWeight: FontWeight.bold),
@@ -63,9 +63,9 @@ class HomeGetStartedUi extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    ColorPicker(TotalTime * 5.5, ColorManager.orange,
+                    ColorPicker(totalTime * 5.5, ColorManager.orange,
                         ColorManager.white),
-                    ColorPicker((60 - TotalTime) * 5.5, ColorManager.grey,
+                    ColorPicker((60 - totalTime) * 5.5, ColorManager.grey,
                         ColorManager.grey),
                   ],
                 )

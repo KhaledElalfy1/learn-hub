@@ -12,7 +12,7 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
-  late PageController _pageViewController;
+   late PageController _pageViewController;
   
   @override
   void initState() {
@@ -29,11 +29,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider<OnboardingCubit>(
-        create: (context) => OnboardingCubit(),
-        child: OnboardingContentWidget(
-            pageViewController: _pageViewController),
-      ),
-    );
+        body: BlocProvider<OnboardingCubit>(
+          create: (context) => OnboardingCubit(),
+          child: OnboardingContentWidget(
+              pageViewController: _pageViewController),
+        ),
+      );
+
   }
 }

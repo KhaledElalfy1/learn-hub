@@ -15,7 +15,7 @@ final String? description;
     return  Container(
       width: 1.sw,
       height: 0.2.sh,
-      padding: EdgeInsets.only(left: SizeManager.s20.w,bottom: SizeManager.s32.h),
+      padding: EdgeInsets.only(left: SizeManager.s20.w,bottom: SizeManager.s20.h),
    alignment: Alignment.bottomLeft,
     child: description != null ?Column(
       mainAxisAlignment: MainAxisAlignment.end,

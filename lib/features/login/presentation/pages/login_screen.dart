@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: ColorManager.greyGrey,
       body: SizedBox(
         width: 1.sw,
+        height: double.infinity,
         child:  Column(
           children: [
             const HeaderSection(title: 'Login',),
@@ -30,13 +31,16 @@ class LoginScreen extends StatelessWidget {
                       top: Radius.circular(SizeManager.s32.r),
                     )
                 ),
-                child: Column(
-                  children: [
-                    LoginSection(),
-                    SizeManager.s24.verticalSpace,
-
-                    const SignupSection(),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 5,),
+                      LoginSection(),
+                      SizeManager.s24.verticalSpace,
+                  
+                      const SignupSection(),
+                    ],
+                  ),
                 ),
 
 

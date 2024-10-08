@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnhub/core/navigation/app_route.dart';
+import 'package:learnhub/core/utils/extensions.dart';
 
 import '../../../../core/managers/color_manager.dart';
 import '../../../../core/managers/size_manager.dart';
 import '../../../../core/managers/style_manager.dart';
+import '../../../../core/navigation/routes.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -29,7 +32,11 @@ class FooterSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Already have an account ? ",style: StyleManager.descriptionPoppins(color: ColorManager.darkGrey),),
-            Text("Log in",style: StyleManager.mediumPoppins(color: ColorManager.blue),),
+            InkWell(
+                onTap:(){
+                  context.replaceScreen(Routes.login);
+                },
+                child: Text("Log in",style: StyleManager.mediumPoppins(color: ColorManager.blue),)),
           ],
         ),
 

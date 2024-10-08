@@ -13,5 +13,14 @@ class StringManager {
 
   static String searchBarHintTxt = 'Find courses';
   static String searchScreenResultsTxt='Results';
+
+  static String yourEmail='Your Email';
+  static String password='Password';
+  static String forgetPassword='Forget password?';
+  static String logIn='Log In';
+  static String dontHaveAccount="Don't have an account?";
+  static String signUp="Sign up";
+  static String orLoginWith="or login with";
+
   
 }

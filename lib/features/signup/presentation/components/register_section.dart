@@ -25,12 +25,24 @@ class RegisterSection extends StatelessWidget {
             controller: emailController,
             labelText: 'Your Email',
             textType: TextInputType.emailAddress,
+            validator: (input){
+              if(input!.isEmpty){
+                return "fill your email";
+              }
+              return null;
+            },
           ),
           SizeManager.s24.verticalSpace,
           CustomTextFormField(
             controller: passwordController,
             labelText: 'Password',
             textType: TextInputType.visiblePassword,
+            validator: (input){
+              if(input!.isEmpty){
+                return "fill your email";
+              }
+              return null;
+            },
           ),
           SizeManager.s12.verticalSpace,
 
@@ -41,7 +53,14 @@ class RegisterSection extends StatelessWidget {
           SizeManager.s12.verticalSpace,
 
           CustomPrimaryElevatedBtn(
-            onPressed: () {},
+            onPressed: () {
+              if(formKey.currentState!.validate()){
+                print("validate");
+              }
+              else{
+                print("Invalidate");
+              }
+            },
             buttonTxt: 'Create account',
             btnWidth: 1.sw,
             btnHeight: 50.h,

@@ -21,12 +21,16 @@ class CustomAuthBtnsComponent extends StatelessWidget {
         CustomPrimaryElevatedBtn(
             onPressed:signUpBtnOnPressedFunc ,
             buttonTxt: StringManager.onboardingScreensignUpTxt,
-            btnWidth: 0.4.sw),
+            btnWidth: 0.4.sw,
+            btnHeight:0.07.sh
+        ),
 
         CustomSecondaryElevatedBtn(
             onPressed: signInBtnOnPressedFunc,
             buttonTxt: StringManager.onboardingScreensignInTxt,
-            btnWidth: 0.4.sw )
+            btnWidth: 0.4.sw,
+            btnHeight:0.07.sh
+        )
       ],
     );
   }

@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/managers/color_manager.dart';
 import 'package:learnhub/core/managers/style_manager.dart';
+import 'package:learnhub/core/utils/extensions.dart';
 import 'package:learnhub/core/widgets/custom_primary_elevated_btn.dart';
 
 import '../../../../core/managers/size_manager.dart';
+import '../../../../core/managers/string_manager.dart';
+import '../../../../core/utils/auth.dart';
+import '../../../../core/widgets/custom_text_button.dart';
 
 class LoginSection extends StatelessWidget {
   LoginSection({super.key});
@@ -22,26 +26,43 @@ class LoginSection extends StatelessWidget {
         children: [
           CustomTextFormField(
             controller: emailController,
-            labelText: 'Your Email',
+            labelText: StringManager.yourEmail,
             textType: TextInputType.emailAddress,
+            validator: (input){
+              if(input!.isEmpty){
+                return "fill your email";
+              }
+              return null;
+            },
           ),
           SizeManager.s24.verticalSpace,
           CustomTextFormField(
             controller: passwordController,
-            labelText: 'Password',
+            labelText:  StringManager.password,
             textType: TextInputType.visiblePassword,
+            validator: (input){
+              if(input!.isEmpty){
+                return "fill your password";
+              }
+              return null;
+            },
           ),
           SizeManager.s12.verticalSpace,
 
-          Text(
-            'Forget password?',
-            style: StyleManager.descriptionPoppins(color: ColorManager.darkGrey),
-          ),
+           CustomTextButton(text: StringManager.forgetPassword, onTap:(){
+            print("tap");
+          },),
           SizeManager.s12.verticalSpace,
 
           CustomPrimaryElevatedBtn(
-            onPressed: () {},
-            buttonTxt: 'Log In',
+            onPressed: () {
+              if(formKey.currentState!.validate()){
+                  print("validate");
+                  AppAuth.login(emailController.text, passwordController.text, context);
+
+              }
+            },
+            buttonTxt: StringManager.logIn,
             btnWidth: 1.sw,
             btnHeight: 50.h,
           )
@@ -51,6 +72,7 @@ class LoginSection extends StatelessWidget {
   }
 }
 
+
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
       {super.key,
@@ -58,7 +80,7 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixIcon,
       required this.controller,
       this.isSecret = false,
-      required this.textType});
+      required this.textType, required this.validator});
 
   TextEditingController controller;
 
@@ -66,10 +88,11 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool isSecret;
   final TextInputType textType;
-
+  final String? Function(String?) validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
       controller: controller,
       cursorColor: ColorManager.lightGrey,
       keyboardType: textType,
@@ -78,22 +101,22 @@ class CustomTextFormField extends StatelessWidget {
         labelStyle:
             StyleManager.descriptionPoppins(color: ColorManager.darkGrey),
         suffixIcon: suffixIcon,
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             borderSide: BorderSide(
               color: ColorManager.lighterGrey,
             )),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             borderSide: BorderSide(
               color: ColorManager.lighterGrey,
             )),
-        disabledBorder: OutlineInputBorder(
+        disabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             borderSide: BorderSide(
               color: ColorManager.lighterGrey,
             )),
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             borderSide: BorderSide(
               color: ColorManager.lighterGrey,

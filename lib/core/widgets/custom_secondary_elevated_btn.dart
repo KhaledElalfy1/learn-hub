@@ -9,11 +9,15 @@ class CustomSecondaryElevatedBtn extends StatelessWidget {
   final void Function() onPressed;
   final String buttonTxt;
   final double btnWidth;
+  final double? btnHeight;
   const CustomSecondaryElevatedBtn(
       {super.key,
       required this.onPressed,
       required this.buttonTxt,
-      required this.btnWidth});
+      required this.btnWidth,
+        this.btnHeight,
+
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class CustomSecondaryElevatedBtn extends StatelessWidget {
         overlayColor:
             const WidgetStatePropertyAll<Color>(ColorManager.lightGrey),
         minimumSize:
-            WidgetStatePropertyAll<Size>(Size(btnWidth, SizeManager.s64.sp)),
+            WidgetStatePropertyAll<Size>(Size(btnWidth,btnHeight??SizeManager.s64.sp)),
         shape: WidgetStatePropertyAll<OutlinedBorder>(RoundedRectangleBorder(
             side: const BorderSide(color: ColorManager.blue),
             borderRadius:
