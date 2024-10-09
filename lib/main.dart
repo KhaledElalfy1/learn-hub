@@ -21,7 +21,7 @@ void main() async {
       designSize: Size(375, 812),
       child: MaterialApp(
         title: 'LearnHub',
-        initialRoute: Routes.onboarding,
+        initialRoute: Routes.courses,
         onGenerateRoute: AppRoute.getRoute ,
       ),
     ),

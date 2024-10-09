@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:learnhub/core/managers/color_manager.dart';
 import 'package:learnhub/features/courses/presentation/data/course_model.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
-
 import '../../view_model/search_bar_cubit/search_bar_state.dart';
 import 'package:learnhub/core/managers/style_manager.dart';
+
+import 'search_filter_sheet.dart';
 
 class CustomSearchBarWidget extends StatelessWidget {
   const CustomSearchBarWidget({super.key, required this.courses});
@@ -18,8 +18,7 @@ class CustomSearchBarWidget extends StatelessWidget {
       return Column(
         children: [
           SearchBar(
-            hintText: 'Search Course', //StringManager.searchBarHintTxt,
-
+            hintText: 'Search Course',
             backgroundColor:
                 const WidgetStatePropertyAll<Color>(ColorManager.lighterGreyy),
             elevation: const WidgetStatePropertyAll<double>(0.1),
@@ -33,12 +32,9 @@ class CustomSearchBarWidget extends StatelessWidget {
                 ),
               ),
             ),
-
             constraints: BoxConstraints(maxWidth: 0.8.sw, minHeight: 0.06.sh),
-
             onChanged: (searchBarContentText) =>
-                searchBarOnChange(context, searchBarContentText,courses),
-
+                searchBarOnChange(context, searchBarContentText, courses, null, null),
             leading: const Icon(
               Icons.search,
               color: ColorManager.darkGrey,
@@ -47,7 +43,20 @@ class CustomSearchBarWidget extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.format_list_bulleted_rounded),
                 color: ColorManager.darkGrey,
-                onPressed: () => {},
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(25.0)),
+                    ),
+                    builder: (ctx) => BlocProvider(
+                      create: (context) => SearchBarCubit(),
+                      child: SearchFilterSheet(courses: courses),
+                    ),
+                  );
+                },
               )
             ],
           ),
@@ -57,7 +66,7 @@ class CustomSearchBarWidget extends StatelessWidget {
   }
 }
 
-void searchBarOnChange(BuildContext context, String searchBarContentText,List<CourseModel> courses) =>
-    context
-        .read<SearchBarCubit>()
-        .searchBarOnChangeFunc(searchBarContentText: searchBarContentText,courses:courses);
+void searchBarOnChange(BuildContext context, String searchBarContentText,
+        List<CourseModel> courses, double? minPrice , double? maxPrice) =>
+    context.read<SearchBarCubit>().searchBarOnChangeFunc(
+        searchBarContentText: searchBarContentText, courses: courses , minPrice: minPrice , maxPrice: maxPrice);
