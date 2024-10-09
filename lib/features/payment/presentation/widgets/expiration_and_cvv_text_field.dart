@@ -64,9 +64,7 @@ class _ExpirationDateAndCVVTextFieldState
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-          width: 80,
-          height: 80,
+        Expanded(
           child: DropdownButtonFormField<String>(
             focusNode: monthFocusNode,
             value: selectedMonth,
@@ -90,9 +88,7 @@ class _ExpirationDateAndCVVTextFieldState
         const SizedBox(
           width: 16,
         ),
-        SizedBox(
-          width: 80,
-          height: 80,
+        Expanded(
           child: TextField(
             controller: expiryYearController,
             focusNode: expiryYearFocusNode,
@@ -110,9 +106,7 @@ class _ExpirationDateAndCVVTextFieldState
         const SizedBox(
           width: 8,
         ),
-        SizedBox(
-          width: 170,
-          height: 80,
+        Expanded(
           child: TextField(
             controller: cvvController,
             focusNode: cvvFocusNode,

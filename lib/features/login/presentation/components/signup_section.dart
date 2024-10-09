@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:learnhub/core/managers/size_manager.dart';
 import 'package:learnhub/core/utils/auth.dart';
 import 'package:learnhub/core/utils/extensions.dart';
@@ -62,16 +62,16 @@ class SignupSection extends StatelessWidget {
           children: [
             CustomIconButton(
               svgAssets: SvgAssets.google,
-              onTap: () async{
+              onTap: () async {
                 print("---");
-               await AppAuth.signInWithGoogle();
+                await AppAuth.signInWithGoogle();
                 print("-+++-");
               },
             ),
             CustomIconButton(
               svgAssets: SvgAssets.facebook,
-              onTap: ()async {
-               await AppAuth.signInWithFacebook();
+              onTap: () async {
+                await AppAuth.signInWithFacebook();
               },
             ),
           ],

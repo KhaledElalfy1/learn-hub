@@ -25,7 +25,10 @@ class PaymentInputField extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const ExpirationDateAndCVVTextField()
+        const ExpirationDateAndCVVTextField(),
+        const SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
