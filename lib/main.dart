@@ -15,11 +15,21 @@ void main() async {
   runApp(
     const ScreenUtilInit(
       designSize: Size(375, 812),
-      child: MaterialApp(
-        title: 'LearnHub',
-        initialRoute: Routes.payment,
-        onGenerateRoute: AppRoute.getRoute ,
-      ),
+      child: LearnHub(),
     ),
   );
+}
+
+class LearnHub extends StatelessWidget {
+  const LearnHub({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'LearnHub',
+      initialRoute: Routes.home,
+      onGenerateRoute: AppRoute.getRoute,
+    );
+  }
 }
