@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learnhub/core/app/verified_success_ui.dart';
 import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/features/on_boarding/presentaion/pages/onboarding_page.dart';
 
@@ -15,6 +14,8 @@ import 'package:learnhub/core/managers/color_manager.dart';
 
 import 'package:learnhub/features/search/presentation/pages/search_page.dart';
 import 'package:learnhub/features/signup/presentation/view_model/sign_up_cubit/sign_up_cubit.dart';
+import 'package:learnhub/home/presentation/components/slider_widget.dart';
+import 'package:learnhub/home/screen/home_screen.dart';
 
 import '../../features/login/presentation/pages/login_screen.dart';
 import '../../features/signup/presentation/pages/signup_screen.dart';
@@ -28,6 +29,8 @@ class AppRoute {
         return _getScreen(const OnboardingPage());
       case Routes.login:
         return _getScreen(const LoginScreen());
+      case Routes.login:
+        return _getScreen(const LoginScreen());
       case Routes.register:
         return _getScreen(BlocProvider(
           create: (context) => SignUpCubit(),
@@ -37,11 +40,13 @@ class AppRoute {
         return _getScreen(const Scaffold());
       case Routes.verifyOTP:
         return _getScreen(const Scaffold());
+      case Routes.homeGetStartedUi:
+        return _getScreen(const SliderWidget());
       case Routes.resetPassword:
         return _getScreen(const Scaffold());
 
       case Routes.home:
-        return _getScreen(HomeScreen());
+        return _getScreen(const HomeScreen());
       case Routes.courses:
         return _getScreen(MultiBlocProvider(
           providers: [
