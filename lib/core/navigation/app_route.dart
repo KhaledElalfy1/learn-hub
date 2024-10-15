@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/core/navigation/routes.dart';
+import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/on_boarding/presentaion/pages/onboarding_page.dart';
 
 import 'package:learnhub/features/payment/presentation/pages/payment_screen.dart';
@@ -13,6 +14,7 @@ import 'package:learnhub/features/courses/presentation/view_model/search_bar_cub
 import 'package:learnhub/core/managers/color_manager.dart';
 
 import 'package:learnhub/features/search/presentation/pages/search_page.dart';
+import 'package:learnhub/features/signup/data/repo/sign_up_repo.dart';
 import 'package:learnhub/features/signup/presentation/view_model/sign_up_cubit/sign_up_cubit.dart';
 import 'package:learnhub/home/presentation/components/slider_widget.dart';
 import 'package:learnhub/home/screen/home_screen.dart';
@@ -33,7 +35,7 @@ class AppRoute {
         return _getScreen(const LoginScreen());
       case Routes.register:
         return _getScreen(BlocProvider(
-          create: (context) => SignUpCubit(),
+          create: (context) => SignUpCubit(getIt<SignUpRepo>()),
           child: const SignupScreen(),
         ));
       case Routes.forgetPassword:

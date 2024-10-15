@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/firebase_options.dart';
 import 'core/managers/shared_perference_manager.dart';
 import 'core/navigation/app_route.dart';
@@ -11,6 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setup();
   await SharedPreferencesManager.init();
   runApp(
     const ScreenUtilInit(
@@ -28,7 +30,7 @@ class LearnHub extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LearnHub',
-      initialRoute: Routes.home,
+      initialRoute: Routes.register,
       onGenerateRoute: AppRoute.getRoute,
     );
   }

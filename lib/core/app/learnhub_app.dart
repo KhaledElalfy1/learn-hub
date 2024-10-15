@@ -24,7 +24,7 @@ class LearnHubApp extends StatelessWidget {
             onGenerateRoute: (routeSettings) =>
                 AppRoute.getRoute(routeSettings),
 
-            initialRoute: Routes.splash,
+            initialRoute: Routes.register,
 
           );
         });
