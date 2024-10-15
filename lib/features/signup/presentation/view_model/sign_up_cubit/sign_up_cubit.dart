@@ -15,6 +15,21 @@ class SignUpCubit extends Cubit<SignUpState> {
   bool isPasswordVisible = true;
   IconData passwordIcon = Icons.visibility_off;
 
+  void signUp() async {
+    emit(SignUpLoading());
+    final result = await signUpRepo.signUp(
+        email: emailController.text, password: passwordController.text);
+
+    result.fold(
+      (message) {
+        emit(SignUpError(message));
+      },
+      (r) {
+        emit(SignUpSuccess(r));
+      },
+    );
+  }
+
   void changeAgree() {
     isAgree = !isAgree;
     emit(SignUpAgreeChanged());

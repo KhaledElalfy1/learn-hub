@@ -1,15 +1,16 @@
-import 'dart:developer';
+
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnhub/features/signup/presentation/components/sign_up_button_consumer.dart';
 import 'package:learnhub/features/signup/presentation/view_model/sign_up_cubit/sign_up_cubit.dart';
 import 'package:learnhub/features/signup/presentation/view_model/sign_up_cubit/sign_up_state.dart';
 
 import '../../../../core/managers/color_manager.dart';
 import '../../../../core/managers/size_manager.dart';
 import '../../../../core/managers/style_manager.dart';
-import '../../../../core/widgets/custom_primary_elevated_btn.dart';
 import '../../../login/presentation/components/login_section.dart';
 
 class RegisterSection extends StatelessWidget {
@@ -60,26 +61,10 @@ class RegisterSection extends StatelessWidget {
                 StyleManager.descriptionPoppins(color: ColorManager.darkGrey),
           ),
           SizeManager.s12.verticalSpace,
-          CustomPrimaryElevatedBtn(
-            onPressed: () {
-              if (SignUpCubit.get(context).formKey.currentState!.validate() &&
-                  SignUpCubit.get(context).isAgree) {
-                log("validate");
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text("Please agree to the terms and conditions"),
-                    duration: Duration(seconds: 3),
-                  ),
-                );
-              }
-            },
-            buttonTxt: 'Create account',
-            btnWidth: 1.sw,
-            btnHeight: 50.h,
-          )
+         const SignUpButtonConsumer(),
         ],
       ),
     );
   }
 }
+
