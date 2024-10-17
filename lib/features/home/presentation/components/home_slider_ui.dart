@@ -4,9 +4,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../core/managers/asset_manager.dart';
-import '../../../core/managers/color_manager.dart';
-import '../../../core/managers/size_manager.dart';
+import '../../../../core/managers/asset_manager.dart';
+import '../../../../core/managers/color_manager.dart';
+import '../../../../core/managers/size_manager.dart';
+
+
 class HomeSliderUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

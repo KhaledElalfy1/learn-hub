@@ -14,11 +14,13 @@ class ImageAssets{
   static const String courseCover = "${AssetManager._baseImagePath}coursecover.png";
   static const String courseCover2 = "${AssetManager._baseImagePath}coursecover2.png";
   static const String successful = "${AssetManager._baseImagePath}successful.png";
+  static const String illustration = "${AssetManager._baseImagePath}Illustration.png";
 }
 
 
 class SvgAssets{
   static const String facebook = "${AssetManager._baseSvgPath}facebook.svg";
+  static const String illustration = "${AssetManager._baseSvgPath}Illustration.svg";
   static const String google = "${AssetManager._baseSvgPath}google.svg";
   static const String mobVerification = "${AssetManager._baseSvgPath}mobV_verification.svg";
   static const String noNetwork = "${AssetManager._baseSvgPath}no_network.svg";
