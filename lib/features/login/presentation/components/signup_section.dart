@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:learnhub/core/managers/size_manager.dart';
-import 'package:learnhub/core/utils/auth.dart';
 import 'package:learnhub/core/utils/extensions.dart';
+import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
 
 import '../../../../core/managers/asset_manager.dart';
 import '../../../../core/managers/color_manager.dart';
@@ -62,16 +64,18 @@ class SignupSection extends StatelessWidget {
           children: [
             CustomIconButton(
               svgAssets: SvgAssets.google,
-              onTap: () async {
+              onTap: ()async{
                 print("---");
-                await AppAuth.signInWithGoogle();
+                BlocProvider.of<LoginCubit>(context).signInWithGoogle();
                 print("-+++-");
               },
             ),
             CustomIconButton(
               svgAssets: SvgAssets.facebook,
-              onTap: () async {
-                await AppAuth.signInWithFacebook();
+              onTap: ()async {
+                print("face");
+                BlocProvider.of<LoginCubit>(context).signInWithFacebook();
+                print("0000");
               },
             ),
           ],

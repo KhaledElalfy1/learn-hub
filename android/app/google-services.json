@@ -12,7 +12,20 @@
           "package_name": "com.example.learnhub"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "206595828342-macm0880i4725ct82tnb8qppc4e468sr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.learnhub",
+            "certificate_hash": "108d7f8b1f00ecaae8c7747d63f71e280a5c0509"
+          }
+        },
+        {
+          "client_id": "206595828342-v555rrdjbpepgi9uah4rh638u25q55fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAnMYPFgOaP1v40Qc5x6pi-Ks3UMmFKEks"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206595828342-v555rrdjbpepgi9uah4rh638u25q55fa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "206595828342-c5pbv1hkcc9nutkf5drcisbj31dir7s4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ghr.learnhub"
+              }
+            }
+          ]
         }
       }
     }

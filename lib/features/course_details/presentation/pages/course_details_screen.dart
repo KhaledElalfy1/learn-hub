@@ -20,18 +20,14 @@ class CourseDetailsScreen extends StatefulWidget {
 class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
  @override
   void initState() {
-   SchedulerBinding.instance.addPostFrameCallback((_) {
-     context.addScreen(Routes.onboarding);
 
-     showDialog(context: context, builder: (ctx)=>const ClockingInDialog());
-   });
    super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: ColorManager.lightPink,
-      extendBody: true,
+
       body: Column(
         children: [
           CourseDetailsTopArea(),

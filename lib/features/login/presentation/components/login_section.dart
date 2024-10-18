@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/managers/color_manager.dart';
 import 'package:learnhub/core/managers/style_manager.dart';
-import 'package:learnhub/core/utils/extensions.dart';
 import 'package:learnhub/core/widgets/custom_primary_elevated_btn.dart';
+import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
 
 import '../../../../core/managers/size_manager.dart';
 import '../../../../core/managers/string_manager.dart';
-import '../../../../core/utils/auth.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 
 class LoginSection extends StatelessWidget {
@@ -48,19 +48,16 @@ class LoginSection extends StatelessWidget {
             },
           ),
           SizeManager.s12.verticalSpace,
-          CustomTextButton(
-            text: StringManager.forgetPassword,
-            onTap: () {
-              print("tap");
-            },
-          ),
+
+           CustomTextButton(text: StringManager.forgetPassword, onTap:(){
+          },),
           SizeManager.s12.verticalSpace,
           CustomPrimaryElevatedBtn(
             onPressed: () {
-              if (formKey.currentState!.validate()) {
-                print("validate");
-                AppAuth.login(
-                    emailController.text, passwordController.text, context);
+              if(formKey.currentState!.validate()){
+                  final email = emailController.text.trim();
+                  final password = passwordController.text.trim();
+                  BlocProvider.of<LoginCubit>(context).login(email, password);
               }
             },
             buttonTxt: StringManager.logIn,

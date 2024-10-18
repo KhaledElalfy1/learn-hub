@@ -21,4 +21,12 @@ class SharedPreferencesManager {
   static String? getEmail() {
     return preferences.getString('email');
   }
+
+  static Future<void> setName(String name) async {
+    await preferences.setString('name', name);
+  }
+
+  static String? getName() {
+    return preferences.getString('name');
+  }
 }

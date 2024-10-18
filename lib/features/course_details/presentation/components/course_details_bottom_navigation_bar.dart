@@ -13,7 +13,7 @@ class CourseDetailsBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
       width: 1.sw,
-      height: 110.h,
+      height: 90.h,
       padding: EdgeInsets.only(right: SizeManager.s16.w,left: SizeManager.s16.w,bottom: MediaQuery.paddingOf(context).bottom),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -28,7 +28,7 @@ class CourseDetailsBottomNavigationBar extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 CourseDetailsIconButton(onTap: (){}),
           SizeManager.s14.horizontalSpace,

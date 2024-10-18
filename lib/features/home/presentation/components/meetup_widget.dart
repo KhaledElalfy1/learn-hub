@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:learnhub/core/managers/asset_manager.dart';
+import 'package:learnhub/core/managers/color_manager.dart';
+import 'package:learnhub/core/managers/size_manager.dart';
 
-import '../../../core/managers/asset_manager.dart';
-import '../../../core/managers/color_manager.dart';
-import '../../../core/managers/size_manager.dart';
+
 
 class MeetUp extends StatelessWidget {
   const MeetUp({super.key});

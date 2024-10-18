@@ -15,10 +15,9 @@ class CourseDetailsMainContainer extends StatelessWidget {
         child: Container(
       width: 1.sw,
       padding: EdgeInsets.only(
-          top: SizeManager.s24.h,
+          top: SizeManager.s20.h,
           left: SizeManager.s16.w,
           right: SizeManager.s16.w,
-        bottom: 110.h,
       ),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -31,7 +30,7 @@ class CourseDetailsMainContainer extends StatelessWidget {
           SizeManager.s16.verticalSpace,
           Text(
             'About Course',
-            style: StyleManager.titlePoppins(color: ColorManager.darkBlue),
+            style: StyleManager.titlePoppins(color: ColorManager.darkBlue,fontSize: 22),
           ),
           Text(
             'Course description',
@@ -64,7 +63,7 @@ class CourseInfoHeader extends StatelessWidget {
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             'Course Details',
-            style: StyleManager.titlePoppins(color: ColorManager.darkBlue),
+            style: StyleManager.titlePoppins(color: ColorManager.darkBlue,fontSize: 25),
           ),
           Text(
             'Course description',
@@ -75,7 +74,7 @@ class CourseInfoHeader extends StatelessWidget {
         ]),
         Text(
           '\$250.00',
-          style: StyleManager.titlePoppins(color: ColorManager.blue),
+          style: StyleManager.titlePoppins(color: ColorManager.blue,fontSize: 25),
         )
       ],
     );

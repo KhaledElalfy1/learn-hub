@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learnhub/home/presentation/components/current_courses_progress.dart';
-import 'package:learnhub/home/presentation/components/meetup_widget.dart';
-import 'package:learnhub/home/presentation/components/slider_widget.dart';
+import 'package:learnhub/features/home/presentation/components/current_courses_progress.dart';
+import 'package:learnhub/features/home/presentation/components/home_meetup_ui.dart';
+import 'package:learnhub/features/home/presentation/components/slider_widget.dart';
 
 class CoursesOffersWidget extends StatelessWidget {
   const CoursesOffersWidget({
