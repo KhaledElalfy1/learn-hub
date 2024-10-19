@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/core/services/services_locator.dart';
-import 'package:learnhub/features/home/presentation/components/slider_widget.dart';
+import 'package:learnhub/home/components/slider_widget.dart';
 import 'package:learnhub/features/on_boarding/presentaion/pages/onboarding_page.dart';
 
 import 'package:learnhub/features/payment/presentation/pages/payment_screen.dart';
