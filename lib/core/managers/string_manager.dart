@@ -22,5 +22,7 @@ class StringManager {
   static String signUp="Sign up";
   static String orLoginWith="or login with";
 
+  static String onBoarding='onBoarding';
+
   
 }
