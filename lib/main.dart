@@ -11,9 +11,10 @@ import 'core/managers/shared_perference_manager.dart';
 import 'core/navigation/app_route.dart';
 import 'core/navigation/routes.dart';
 
-
 import 'features/courses/presentation/view_model/chosen_courses_cubit/chosen_courses_cubit.dart';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -22,18 +23,20 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=> LoginCubit()),
-        BlocProvider(create: (context)=> LogOutCubit()),
-        BlocProvider(create: (context)=> SearchBarCubit()),
-        BlocProvider(create: (context)=> ChosenCoursesCubit()..selectIndex(0),),
-
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => LogOutCubit()),
+        BlocProvider(create: (context) => SearchBarCubit()),
+        BlocProvider(
+          create: (context) => ChosenCoursesCubit()..selectIndex(0),
+        ),
       ],
       child: const ScreenUtilInit(
         designSize: Size(375, 812),
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'LearnHub',
           initialRoute: Routes.onboarding,
-          onGenerateRoute: AppRoute.getRoute ,
+          onGenerateRoute: AppRoute.getRoute,
         ),
       ),
     ),
@@ -48,7 +51,7 @@ class LearnHub extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LearnHub',
-      initialRoute: Routes.register,
+      initialRoute: Routes.onboarding,
       onGenerateRoute: AppRoute.getRoute,
     );
   }
