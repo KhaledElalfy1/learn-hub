@@ -51,9 +51,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   ),
                   label: 'Search'),
               CustomNavigationDestination(
-                  disabledIcon: Icons.message_outlined,
-                  selectedIcon: Icons.message,
-                  label: 'Message'),
+                  disabledIcon: Icons.donut_large_outlined,
+                  selectedIcon: Icons.donut_large,
+                  label: 'Progress'),
               CustomNavigationDestination(
                   disabledIcon: Icons.person_outlined,
                   selectedIcon: Icons.person,

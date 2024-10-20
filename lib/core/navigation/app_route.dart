@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/courses/presentation/data/course_model.dart';
+import 'package:learnhub/features/my_courses/presentation/pages/my_courses_screen.dart';
 import 'package:learnhub/home/components/slider_widget.dart';
 import 'package:learnhub/features/on_boarding/presentaion/pages/onboarding_page.dart';
 
@@ -28,8 +29,6 @@ class AppRoute {
         return _getScreen(const Scaffold());
       case Routes.onboarding:
         return _getScreen(const OnboardingPage());
-      case Routes.login:
-        return _getScreen(const LoginScreen());
       case Routes.login:
         return _getScreen(const LoginScreen());
       case Routes.register:
@@ -75,6 +74,8 @@ class AppRoute {
         return _getScreen(const Scaffold());
       case Routes.changePassword:
         return _getScreen(const Scaffold());
+      case Routes.myCourseScreen:
+        return _getScreen(const MyCoursesScreen());
 
       default:
         return _getNotFoundScreen();
