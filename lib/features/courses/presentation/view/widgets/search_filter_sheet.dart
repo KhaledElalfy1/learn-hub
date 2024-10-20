@@ -4,8 +4,9 @@ import '../../data/course_model.dart';
 import 'custom_search_bar_widget.dart';
 
 class SearchFilterSheet extends StatefulWidget {
-  const SearchFilterSheet({super.key, required this.courses});
+  const SearchFilterSheet({super.key, required this.courses, required  this.searchContent});
   final List<CourseModel> courses;
+  final String searchContent;
   
 
   @override
@@ -107,13 +108,13 @@ class _SearchFilterSheetState extends State<SearchFilterSheet> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      searchBarOnChange(context,'filtering',widget.courses , _minPrice , _maxPrice);
+                      searchBarOnChange(context,widget.searchContent,widget.courses , _minPrice , _maxPrice);
                       Navigator.pop(context);
                     },
-                    child: const Text('Apply Filter'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
+                    child: const Text('Apply Filter'),
                   ),
                 ],
               )

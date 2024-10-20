@@ -14,11 +14,3 @@ class ChangeContentOfSearchBarState extends SearchBarState {
       required this.foundCourses,
       });
 }
-class FilterCourseSuccess extends SearchBarState {
-  List<CourseModel>? foundCourses;
-
-  FilterCourseSuccess(
-      {
-      required this.foundCourses,
-      });
-}

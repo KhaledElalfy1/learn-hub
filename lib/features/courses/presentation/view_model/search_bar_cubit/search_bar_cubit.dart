@@ -7,34 +7,42 @@ import 'package:learnhub/features/courses/presentation/view_model/search_bar_cub
 class SearchBarCubit extends Cubit<SearchBarState> {
   SearchBarCubit() : super(InitialState());
   List<CourseModel> result = [];
-  void searchBarOnChangeFunc(
-      {required String searchBarContentText,required List<CourseModel> courses , double? minPrice , double? maxPrice}) {
+  void searchBarOnChangeFunc({
+  required String searchBarContentText,
+  required List<CourseModel> courses,
+  double? minPrice,
+  double? maxPrice,
+}) {
+  result = [];
 
-    if (searchBarContentText.isEmpty) {
-      result = [];
+  if (searchBarContentText.isEmpty) {
+    result = [];  
+    emit(InitialState());
+  }else {
+    result = courses.where((element) {
+    return element.title
+        .toLowerCase()
+        .trim()
+        .contains(searchBarContentText.toLowerCase().trim());
+  }).toList();
 
-      emit(InitialState());
-    } else if (searchBarContentText == 'filtering'&& minPrice!=null && maxPrice !=null) {
-      result = courses.where((element) {
-        return element.price == 'Free' ||
-            (element.price != 'Free' &&
-                double.parse(element.price) >= minPrice&&
-                double.parse(element.price) <= maxPrice);
-      }).toList();
-      for(var item in result)
-      {log(item.description);}
-      emit(FilterCourseSuccess(foundCourses: result));
-
-    } else {
-      result = courses
-          .where((element) => element.title
-              .toLowerCase()
-              .trim()
-              .contains(searchBarContentText.toLowerCase().trim()))
-          .toList();
-
-      emit(ChangeContentOfSearchBarState(
-          searchBarContentText: searchBarContentText, foundCourses: result));
-    }
+  if (minPrice != null && maxPrice != null) {
+    result = result.where((element) {
+      double? coursePrice = element.price == 'Free' ? 0 : double.tryParse(element.price);
+      return coursePrice != null &&
+          (element.price == 'Free' ||
+          (coursePrice >= minPrice && coursePrice <= maxPrice));
+    }).toList();
   }
+
+  for (var item in result) {
+    log(item.description);
+  }
+
+
+  emit(ChangeContentOfSearchBarState(
+      searchBarContentText: searchBarContentText, foundCourses: result));
+  }
+}
+
 }

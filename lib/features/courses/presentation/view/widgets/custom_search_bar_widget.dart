@@ -14,6 +14,7 @@ class CustomSearchBarWidget extends StatelessWidget {
   final List<CourseModel> courses;
   @override
   Widget build(BuildContext context) {
+   late String txt;
     return BlocBuilder<SearchBarCubit, SearchBarState>(builder: (_, state) {
       return Column(
         children: [
@@ -33,8 +34,9 @@ class CustomSearchBarWidget extends StatelessWidget {
               ),
             ),
             constraints: BoxConstraints(maxWidth: 0.8.sw, minHeight: 0.06.sh),
-            onChanged: (searchBarContentText) =>
-                searchBarOnChange(context, searchBarContentText, courses, null, null),
+            onChanged: (searchBarContentText) {
+              txt=searchBarContentText;
+                searchBarOnChange(context, searchBarContentText,courses, null, null);},
             leading: const Icon(
               Icons.search,
               color: ColorManager.darkGrey,
@@ -53,7 +55,7 @@ class CustomSearchBarWidget extends StatelessWidget {
                     ),
                     builder: (ctx) => BlocProvider(
                       create: (context) => SearchBarCubit(),
-                      child: SearchFilterSheet(courses: courses),
+                      child: SearchFilterSheet(courses: courses , searchContent : txt),
                     ),
                   );
                 },
