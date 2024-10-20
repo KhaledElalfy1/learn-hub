@@ -11,28 +11,36 @@ class CourseDetailsBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       width: 1.sw,
       height: 90.h,
-      padding: EdgeInsets.only(right: SizeManager.s16.w,left: SizeManager.s16.w,bottom: MediaQuery.paddingOf(context).bottom),
+      padding: EdgeInsets.only(
+          right: SizeManager.s16.w,
+          left: SizeManager.s16.w,
+          bottom: MediaQuery.paddingOf(context).bottom),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(SizeManager.s20.r)),
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0,2),
-            blurRadius: 15,
-            color: ColorManager.lighterGrey.withOpacity(0.502)
-          )
-        ]
-      ),
+          color: Colors.white,
+          borderRadius:
+              BorderRadius.vertical(top: Radius.circular(SizeManager.s20.r)),
+          boxShadow: [
+            BoxShadow(
+                offset: const Offset(0, 2),
+                blurRadius: 15,
+                color: ColorManager.lighterGrey.withOpacity(0.502))
+          ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-CourseDetailsIconButton(onTap: (){}),
+          CourseDetailsIconButton(onTap: () {}),
           SizeManager.s14.horizontalSpace,
-          Expanded(child: CustomPrimaryElevatedBtn(onPressed: () {}, buttonTxt: 'Next', btnWidth: 30.w,btnHeight: 50.h,)),
+          Expanded(
+              child: CustomPrimaryElevatedBtn(
+            onPressed: () {},
+            buttonTxt: 'Next',
+            btnWidth: 30.w,
+            btnHeight: 50.h,
+          )),
         ],
       ),
     );

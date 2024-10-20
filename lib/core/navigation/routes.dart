@@ -28,6 +28,8 @@ class Routes{
 
   static const String homeGetStartedUi = '/homeGetStartedUi';
 
+  static const String myCourseScreen = '/myCourseScreen';
+
 
 
 }

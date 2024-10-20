@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,14 +29,15 @@ class SignupSection extends StatelessWidget {
                   StyleManager.descriptionPoppins(color: ColorManager.darkGrey),
             ),
             InkWell(
-                onTap: () {
-                  context.replaceScreen(Routes.register);
-                },
-                child: Text(
-                  StringManager.signUp,
-                  style:
-                      StyleManager.descriptionPoppins(color: ColorManager.blue),
-                )),
+              onTap: () {
+                context.replaceScreen(Routes.register);
+              },
+              child: Text(
+                StringManager.signUp,
+                style:
+                    StyleManager.descriptionPoppins(color: ColorManager.blue),
+              ),
+            ),
           ],
         ),
         SizeManager.s16.verticalSpace,
@@ -64,7 +64,7 @@ class SignupSection extends StatelessWidget {
           children: [
             CustomIconButton(
               svgAssets: SvgAssets.google,
-              onTap: ()async{
+              onTap: () async {
                 print("---");
                 BlocProvider.of<LoginCubit>(context).signInWithGoogle();
                 print("-+++-");
@@ -72,7 +72,7 @@ class SignupSection extends StatelessWidget {
             ),
             CustomIconButton(
               svgAssets: SvgAssets.facebook,
-              onTap: ()async {
+              onTap: () async {
                 print("face");
                 BlocProvider.of<LoginCubit>(context).signInWithFacebook();
                 print("0000");

@@ -10,12 +10,26 @@ import '../../../../core/managers/size_manager.dart';
 import '../../../../core/managers/string_manager.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 
-class LoginSection extends StatelessWidget {
-  LoginSection({super.key});
+class LoginSection extends StatefulWidget {
+  const LoginSection({super.key});
 
+  @override
+  State<LoginSection> createState() => _LoginSectionState();
+}
+
+class _LoginSectionState extends State<LoginSection> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool isVisibility = true;
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +54,15 @@ class LoginSection extends StatelessWidget {
             controller: passwordController,
             labelText: StringManager.password,
             textType: TextInputType.visiblePassword,
+            isSecret: isVisibility,
+            suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    isVisibility = !isVisibility;
+                  });
+                },
+                icon: Icon(
+                    !isVisibility ? Icons.visibility : Icons.visibility_off)),
             validator: (input) {
               if (input!.isEmpty) {
                 return "fill your password";
@@ -48,16 +71,17 @@ class LoginSection extends StatelessWidget {
             },
           ),
           SizeManager.s12.verticalSpace,
-
-           CustomTextButton(text: StringManager.forgetPassword, onTap:(){
-          },),
+          CustomTextButton(
+            text: StringManager.forgetPassword,
+            onTap: () {},
+          ),
           SizeManager.s12.verticalSpace,
           CustomPrimaryElevatedBtn(
             onPressed: () {
-              if(formKey.currentState!.validate()){
-                  final email = emailController.text.trim();
-                  final password = passwordController.text.trim();
-                  BlocProvider.of<LoginCubit>(context).login(email, password);
+              if (formKey.currentState!.validate()) {
+                final email = emailController.text.trim();
+                final password = passwordController.text.trim();
+                BlocProvider.of<LoginCubit>(context).login(email, password);
               }
             },
             buttonTxt: StringManager.logIn,

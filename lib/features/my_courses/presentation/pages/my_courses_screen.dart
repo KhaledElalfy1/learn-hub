@@ -7,8 +7,8 @@ import '../components/card_header.dart';
 import '../components/course_item.dart';
 
 class MyCoursesScreen extends StatelessWidget {
-   MyCoursesScreen({super.key});
-  List<Course> generateDummyCourses = [
+  const MyCoursesScreen({super.key});
+  final List<Course> generateDummyCourses = const [
     Course(
       title: 'Introduction to Flutter',
       date: '09/24',
@@ -62,41 +62,42 @@ class MyCoursesScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: ColorManager.white,
-        automaticallyImplyLeading: true,
-        centerTitle: true,
-        title: const Text('My Courses'),
-      ),
-      backgroundColor: ColorManager.white,
-      body: Column(
-        children: [
-          const CardHeader(),
-          SizeManager.s20.verticalSpace,
-          Expanded(
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(horizontal: SizeManager.s8.w),
-              itemBuilder: (context, index) =>  CourseItem(index: index,course: generateDummyCourses[index],),
-              itemCount: generateDummyCourses.length,
-              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisExtent: 223.h,
-                mainAxisSpacing: 16.h,
-                crossAxisSpacing: 14.w,
+        body: Column(
+          children: [
+            const SizedBox(height: 20),
+            const CardHeader(),
+            SizeManager.s20.verticalSpace,
+            Expanded(
+              child: GridView.builder(
+                padding: EdgeInsets.symmetric(horizontal: SizeManager.s8.w),
+                itemBuilder: (context, index) => CourseItem(
+                  index: index,
+                  course: generateDummyCourses[index],
+                ),
+                itemCount: generateDummyCourses.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 223.h,
+                  mainAxisSpacing: 16.h,
+                  crossAxisSpacing: 14.w,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
+
 class Course {
   final String title;
   final String date;
   final double progress; // Progress ratio between 0 and 1
 
-  Course({required this.title, required this.date, required this.progress});
+  const Course(
+      {required this.title, required this.date, required this.progress});
 }
-

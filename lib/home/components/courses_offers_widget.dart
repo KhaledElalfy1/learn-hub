@@ -38,7 +38,7 @@ class CoursesOffersWidget extends StatelessWidget {
             watched: '5',
             total: '20',
           ),
-          SizedBox(height: 25),
+          SizedBox(height: 15),
           MeetUp(),
         ],
       ),

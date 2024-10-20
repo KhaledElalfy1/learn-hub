@@ -29,4 +29,13 @@ class SharedPreferencesManager {
   static String? getName() {
     return preferences.getString('name');
   }
+
+  static Future<void> saveData(
+      {required String key, required bool value}) async {
+    await preferences.setBool(key, value);
+  }
+
+  static bool getData({required String key}) {
+    return preferences.getBool(key) ?? false;
+  }
 }

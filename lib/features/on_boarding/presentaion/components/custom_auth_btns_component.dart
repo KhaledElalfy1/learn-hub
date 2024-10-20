@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnhub/core/managers/shared_perference_manager.dart';
 
 import 'package:learnhub/core/managers/string_manager.dart';
 import 'package:learnhub/core/navigation/routes.dart';
@@ -13,36 +14,36 @@ class CustomAuthBtnsComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-
         CustomPrimaryElevatedBtn(
-            onPressed:signUpBtnOnPressedFunc ,
+            onPressed: signUpBtnOnPressedFunc,
             buttonTxt: StringManager.onboardingScreensignUpTxt,
             btnWidth: 0.4.sw,
-            btnHeight:0.07.sh
-        ),
-
+            btnHeight: 0.07.sh),
         CustomSecondaryElevatedBtn(
             onPressed: signInBtnOnPressedFunc,
             buttonTxt: StringManager.onboardingScreensignInTxt,
             btnWidth: 0.4.sw,
-            btnHeight:0.07.sh
-        )
+            btnHeight: 0.07.sh)
       ],
     );
   }
 
-void signUpBtnOnPressedFunc(){
- context.replaceScreen(Routes.register); 
+  Future signUpBtnOnPressedFunc() async {
+   await SharedPreferencesManager.saveData(
+        key: StringManager.onBoarding, value: true);
+    if (context.mounted) {
+  context.replaceScreen(Routes.register);
 }
+  }
 
-void signInBtnOnPressedFunc(){
- context.replaceScreen(Routes.login); 
+  Future signInBtnOnPressedFunc()async {
+  await  SharedPreferencesManager.saveData(
+        key: StringManager.onBoarding, value: true);
+    if (context.mounted) {
+  context.replaceScreen(Routes.login);
 }
-
+  }
 }
-
-

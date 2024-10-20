@@ -31,7 +31,7 @@ class SignupScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(SizeManager.s12.r),
-                    )),
+                    ),),
                 child: Column(
                   children: [
                   const  RegisterSection(),

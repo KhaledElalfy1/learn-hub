@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +7,6 @@ import 'package:learnhub/features/signup/presentation/view_model/sign_up_cubit/s
 
 import '../../../../core/managers/color_manager.dart';
 import '../../../../core/managers/size_manager.dart';
-import '../../../../core/managers/style_manager.dart';
 import '../../../login/presentation/components/login_section.dart';
 
 class RegisterSection extends StatelessWidget {
@@ -55,16 +51,10 @@ class RegisterSection extends StatelessWidget {
             ),
           ),
           SizeManager.s12.verticalSpace,
-          Text(
-            'Forget password?',
-            style:
-                StyleManager.descriptionPoppins(color: ColorManager.darkGrey),
-          ),
           SizeManager.s12.verticalSpace,
-         const SignUpButtonConsumer(),
+          const SignUpButtonConsumer(),
         ],
       ),
     );
   }
 }
-
