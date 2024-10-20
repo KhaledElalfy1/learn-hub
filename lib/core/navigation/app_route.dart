@@ -13,6 +13,7 @@ import 'package:learnhub/features/signup/data/repo/sign_up_repo.dart';
 import 'package:learnhub/features/signup/presentation/view_model/sign_up_cubit/sign_up_cubit.dart';
 
 import 'package:learnhub/home/screen/home_screen.dart';
+import 'package:learnhub/home/view_model/navigation_cubit/navigation_cubit.dart';
 
 import '../../features/course_details/presentation/pages/course_details_screen.dart';
 import '../../features/login/presentation/pages/login_screen.dart';
@@ -43,9 +44,13 @@ class AppRoute {
       case Routes.resetPassword:
         return _getScreen(const Scaffold());
       case Routes.home:
-        return _getScreen(const HomeScreen());
+        return _getScreen(BlocProvider(
+          create: (context) => NavigationCubit(),
+          child: const HomeScreen(),
+        ));
       case Routes.courses:
-        return _getScreen( const CoursesView(),
+        return _getScreen(
+          const CoursesView(),
         );
       case Routes.search:
         return _getScreen(const Scaffold(
