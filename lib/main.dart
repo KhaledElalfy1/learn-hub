@@ -11,6 +11,7 @@ import 'core/managers/shared_perference_manager.dart';
 import 'core/navigation/app_route.dart';
 import 'core/navigation/routes.dart';
 
+import 'features/course_details/presentation/cubit/play_video_cubit.dart';
 import 'features/courses/presentation/view_model/chosen_courses_cubit/chosen_courses_cubit.dart';
 
 void main() async {
@@ -33,6 +34,7 @@ class LearnHub extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => LogOutCubit()),
         BlocProvider(create: (context) => SearchBarCubit()),
+        BlocProvider(create: (context) => PlayVideoCubit()),
         BlocProvider(
           create: (context) => ChosenCoursesCubit()..selectIndex(0),
         ),

@@ -21,13 +21,12 @@ class LoginCubit extends Cubit<LoginState> {
       // Save email and display name to SharedPreferences
       SharedPreferencesManager.setEmail(email);
       _saveDisplayName();
-
+      _saveDisplayImage();
       emit(SuccessLogin());
       // Navigate to home screen after successful login
     } on FirebaseAuthException catch (e) {
        emit(FailureLogin(failureMessage: e.toString()));
-      // Handle specific Firebase exceptions with detailed messages
-      // _handleAuthError(context, e);
+
     }
   }
 
@@ -47,6 +46,7 @@ class LoginCubit extends Cubit<LoginState> {
 
       await _auth.signInWithCredential(credential);
       _saveDisplayName();
+      _saveDisplayImage();
       emit(SuccessLogin());
 
       // context.replaceScreen(Routes.home);
@@ -86,6 +86,10 @@ class LoginCubit extends Cubit<LoginState> {
   static void _saveDisplayName() {
     final String displayName = _auth.currentUser?.displayName ?? "Guest";
     SharedPreferencesManager.setName(displayName);
+  }
+  static void _saveDisplayImage() {
+    String userProfilePic  = _auth.currentUser?.photoURL??ImageAssets.accountProfile;
+    SharedPreferencesManager.setImage(userProfilePic);
   }
 
   static void _handleAuthError(BuildContext context, FirebaseAuthException e) {
