@@ -52,6 +52,7 @@ class LearnHub extends StatelessWidget {
   }
 
   String? getInitRoute() {
+    // return Routes.courseDetails;
     if (FirebaseAuth.instance.currentUser != null) {
       return Routes.home;
     } else if (SharedPreferencesManager.getData(

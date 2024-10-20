@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/core/services/services_locator.dart';
+import 'package:learnhub/features/courses/presentation/data/course_model.dart';
 import 'package:learnhub/home/components/slider_widget.dart';
 import 'package:learnhub/features/on_boarding/presentaion/pages/onboarding_page.dart';
 
@@ -21,6 +22,7 @@ import '../../features/signup/presentation/pages/signup_screen.dart';
 
 class AppRoute {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
+    final argument = routeSettings.arguments;
     switch (routeSettings.name) {
       case Routes.splash:
         return _getScreen(const Scaffold());
@@ -62,7 +64,7 @@ class AppRoute {
       case Routes.account:
         return _getScreen(const Scaffold());
       case Routes.courseDetails:
-        return _getScreen(const CourseDetailsScreen());
+        return _getScreen( CourseDetailsScreen(courseModel: argument as CourseModel,));
       case Routes.courseContent:
         return _getScreen(const Scaffold());
       case Routes.myCourses:
