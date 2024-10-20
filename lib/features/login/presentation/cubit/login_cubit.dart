@@ -3,11 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:learnhub/core/utils/extensions.dart';
+import 'package:learnhub/core/managers/asset_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../core/managers/shared_perference_manager.dart';
-import '../../../../core/navigation/routes.dart';
 import '../../../../core/widgets/custom_error_widget.dart';
 import 'login_state.dart';
 
@@ -24,13 +22,12 @@ class LoginCubit extends Cubit<LoginState> {
       // Save email and display name to SharedPreferences
       SharedPreferencesManager.setEmail(email);
       _saveDisplayName();
-
+      _saveDisplayImage();
       emit(SuccessLogin());
       // Navigate to home screen after successful login
     } on FirebaseAuthException catch (e) {
        emit(FailureLogin(failureMessage: e.toString()));
-      // Handle specific Firebase exceptions with detailed messages
-      // _handleAuthError(context, e);
+
     }
   }
 
@@ -50,6 +47,7 @@ class LoginCubit extends Cubit<LoginState> {
 
       await _auth.signInWithCredential(credential);
       _saveDisplayName();
+      _saveDisplayImage();
       emit(SuccessLogin());
 
       // context.replaceScreen(Routes.home);
@@ -89,6 +87,10 @@ class LoginCubit extends Cubit<LoginState> {
   static void _saveDisplayName() {
     final String displayName = _auth.currentUser?.displayName ?? "Guest";
     SharedPreferencesManager.setName(displayName);
+  }
+  static void _saveDisplayImage() {
+    String userProfilePic  = _auth.currentUser?.photoURL??ImageAssets.accountProfile;
+    SharedPreferencesManager.setImage(userProfilePic);
   }
 
   static void _handleAuthError(BuildContext context, FirebaseAuthException e) {

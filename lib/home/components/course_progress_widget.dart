@@ -5,69 +5,84 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CourseProgressWidget extends StatelessWidget {
   const CourseProgressWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.sizeOf(context);
     return Container(
-      height: 150,
-      margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+      margin: EdgeInsets.only(left: size.width*.05,top: 30),
+      constraints:BoxConstraints.tightFor(width: size.width*.9,height: size.height*.135),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: ColorManager.white,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(24),
-          ),
-          boxShadow: [
-            BoxShadow(
-                color: ColorManager.lightGrey.withOpacity(.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: const Offset(0, 3))
-          ]),
+        color: ColorManager.white,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(15),
+        ),
+        boxShadow: [
+          BoxShadow(
+              color: ColorManager.darkGrey.withOpacity(.3),
+              spreadRadius: 1,
+              blurRadius: 2,
+              offset: const Offset(5, 10))
+        ],
+      ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 32.0, left: 32.0, right: 25.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Learned today",
                   style: TextStyle(
-                      fontSize: SizeManager.s12, color: ColorManager.lightGrey),
+                      fontSize: SizeManager.s12,
+                      color: ColorManager.lightGrey),
                 ),
-                const SizedBox(
-                  width: 150,
-                ),
+                SizedBox(width: 3,),
                 Text(
                   "My courses",
                   style: TextStyle(
                       fontSize: SizeManager.s12, color: ColorManager.blue),
-                )
+                ),
               ],
             ),
+            const SizedBox(height: 10),
+            // الصف الثاني مع المحاذاة للبداية
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   "46 min",
                   style: TextStyle(
-                      fontSize: SizeManager.s20, fontWeight: FontWeight.bold),
+                      fontSize: SizeManager.s20,
+                      fontWeight: FontWeight.bold),
                 ),
                 Text(
                   " / 60min",
                   style: TextStyle(
-                      color: ColorManager.lightGrey, fontSize: SizeManager.s12),
-                )
+                      color: ColorManager.lightGrey,
+                      fontSize: SizeManager.s12),
+                ),
               ],
             ),
+            const SizedBox(height: 10),
+            // الصف الثالث: LinearPercentIndicator مع تأثير الظل للألوان
             LinearPercentIndicator(
-              width: MediaQuery.sizeOf(context).width - 100,
-              lineHeight: 14.0,
-              percent: 46 / 60,
+              width: MediaQuery.sizeOf(context).width - 80,
+              lineHeight: 10.0,
+              percent: 51 / 60,
               barRadius: const Radius.circular(20),
               animation: true,
               animationDuration: 5000,
-              backgroundColor: Colors.grey,
+              backgroundColor: Colors.grey[300],
               progressColor: const Color(0xffFF5106),
+              curve: Curves.easeInOut,
+              widgetIndicator: const Icon(
+                Icons.circle,
+                size: 14,
+                color: Colors.blue,
+              ),
             ),
           ],
         ),

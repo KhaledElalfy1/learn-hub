@@ -14,5 +14,6 @@ class SizeManager{
   static double s40=40.0;
   static double s48=48.0;
   static double s64=64.0;
+  static double s90=90.0;
   static double s128=128.0;
 }

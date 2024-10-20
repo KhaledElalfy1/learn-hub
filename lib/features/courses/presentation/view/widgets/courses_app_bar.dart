@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../core/widgets/custom_user_image.dart';
+
 class CoursesAppBar extends StatelessWidget {
   const CoursesAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
+        Text(
           'Course',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 26,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SvgPicture.asset(
-          'assets/svg/profile.svg',
-        ),
+        CustomUserImage()
       ],
     );
   }
