@@ -7,8 +7,8 @@ import '../components/card_header.dart';
 import '../components/course_item.dart';
 
 class MyCoursesScreen extends StatelessWidget {
-   MyCoursesScreen({super.key});
-  List<Course> generateDummyCourses = [
+  const MyCoursesScreen({super.key});
+ final List<Course> generateDummyCourses =const [
     Course(
       title: 'Introduction to Flutter',
       date: '09/24',
@@ -97,6 +97,6 @@ class Course {
   final String date;
   final double progress; // Progress ratio between 0 and 1
 
-  Course({required this.title, required this.date, required this.progress});
+ const Course({required this.title, required this.date, required this.progress});
 }
 
