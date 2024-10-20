@@ -4,6 +4,8 @@ import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/courses/presentation/data/course_model.dart';
 import 'package:learnhub/features/my_courses/presentation/pages/my_courses_screen.dart';
+import 'package:learnhub/features/profile/pages/account_page.dart';
+import 'package:learnhub/features/splash/pages/splash.dart';
 import 'package:learnhub/home/components/slider_widget.dart';
 import 'package:learnhub/features/on_boarding/presentaion/pages/onboarding_page.dart';
 
@@ -26,7 +28,7 @@ class AppRoute {
     final argument = routeSettings.arguments;
     switch (routeSettings.name) {
       case Routes.splash:
-        return _getScreen(const Scaffold());
+        return _getScreen(const SplashPage());
       case Routes.onboarding:
         return _getScreen(const OnboardingPage());
       case Routes.login:
@@ -71,7 +73,7 @@ class AppRoute {
       case Routes.payment:
         return _getScreen(const PaymentScreen());
       case Routes.profile:
-        return _getScreen(const Scaffold());
+        return _getScreen(const AccountPage());
       case Routes.changePassword:
         return _getScreen(const Scaffold());
       case Routes.myCourseScreen:

@@ -8,6 +8,7 @@ class ImageAssets{
   static const String banner1 = "${AssetManager._baseImagePath}banner1.png";
   static const String banner2 = "${AssetManager._baseImagePath}banner2.png";
   static const String banner3 = "${AssetManager._baseImagePath}banner3.png";
+  static const String splash = "${AssetManager._baseImagePath}splash.png";
   static const String bestseller = "${AssetManager._baseImagePath}bestseller.png";
   static const String category1 = "${AssetManager._baseImagePath}category1.png";
   static const String category2 = "${AssetManager._baseImagePath}category2.png";
