@@ -8,6 +8,7 @@ import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
 import 'package:learnhub/features/login/presentation/cubit/log_out_cubit.dart';
 import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
+import 'package:learnhub/features/splash/pages/splash.dart';
 import 'package:learnhub/firebase_options.dart';
 import 'core/managers/shared_perference_manager.dart';
 import 'core/navigation/app_route.dart';
@@ -46,22 +47,12 @@ class LearnHub extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'LearnHub',
-          initialRoute: getInitRoute(),
+          initialRoute: Routes.splash,
           onGenerateRoute: AppRoute.getRoute,
         ),
       ),
     );
   }
 
-  String? getInitRoute() {
-    // return Routes.myCourseScreen;
-    if (FirebaseAuth.instance.currentUser != null) {
-      return Routes.home;
-    } else if (SharedPreferencesManager.getData(
-        key: StringManager.onBoarding)) {
-      return Routes.login;
-    } else {
-      return Routes.onboarding;
-    }
-  }
+  
 }

@@ -5,6 +5,7 @@ import 'package:learnhub/features/my_courses/presentation/pages/my_courses_scree
 import 'package:learnhub/features/search/presentation/pages/search_page.dart';
 import 'package:learnhub/home/screen/welcome_screen.dart';
 import 'package:learnhub/home/view_model/navigation_cubit/navigation_state.dart';
+import '../../../features/profile/pages/account_page.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(NavigationInitial());
@@ -16,11 +17,7 @@ class NavigationCubit extends Cubit<NavigationState> {
     CoursesView(),
     SearchPage(),
     MyCoursesScreen(),
-    Scaffold(
-      body: Center(
-        child: Text('Profile'),
-      ),
-    ),
+    AccountPage()
   ];
 
   void selectIndex(int index) {

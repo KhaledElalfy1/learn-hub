@@ -33,12 +33,19 @@ dependencies:
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
   percent_indicator: ^4.2.3
+
   video_player:
   cached_network_image: ^3.4.1
+  flutter_launcher_icons: ^0.14.1
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/appicon.png"
 
 flutter:
   uses-material-design: true
@@ -47,6 +54,9 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/fonts/
+flutter_intl:
+  enabled: true
+
 #  fonts:
 #    - family: poppins
 #      fonts:
