@@ -29,6 +29,13 @@ class SharedPreferencesManager {
   static String? getName() {
     return preferences.getString('name');
   }
+  static Future<void> setImage(String imageUrl) async {
+    await preferences.setString('image', imageUrl);
+  }
+
+  static String? getImage() {
+    return preferences.getString('image');
+  }
 
   static Future<void> saveData(
       {required String key, required bool value}) async {

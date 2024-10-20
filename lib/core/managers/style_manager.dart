@@ -6,6 +6,7 @@ class StyleManager {
   static TextStyle descriptionPoppins(
           {double? fontSize, Color? color, FontWeight? fontWeight}) =>
       GoogleFonts.poppins(
+
           fontSize: fontSize ?? 16.sp,
           color: color,
           fontWeight: fontWeight ?? FontWeight.normal);

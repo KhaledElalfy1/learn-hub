@@ -10,3 +10,7 @@ class FailureLogin extends LoginState{
   final String failureMessage;
   FailureLogin({required this.failureMessage});
 }
+
+class ImageLoading extends LoginState{}
+class ImageLoaded extends LoginState {}
+class ImageFailure extends LoginState {}
