@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
@@ -21,6 +22,7 @@ void main() async {
   );
   setup();
   await SharedPreferencesManager.init();
+  await dotenv.load(fileName: ".env");
   runApp(const LearnHub());
 }
 
@@ -39,8 +41,8 @@ class LearnHub extends StatelessWidget {
           create: (context) => ChosenCoursesCubit()..selectIndex(0),
         ),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(375, 812),
+      child:const ScreenUtilInit(
+        designSize:  Size(375, 812),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'LearnHub',
