@@ -108,7 +108,7 @@ class ClockingInDialog extends StatelessWidget {
                     border: Border.all(color: ColorManager.white)
 
                 ),
-                child: Icon(Icons.close,color: ColorManager.white,),
+                child:const Icon(Icons.close,color: ColorManager.white,),
               ),
             )
 
