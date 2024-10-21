@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,17 +67,17 @@ class SignupSection extends StatelessWidget {
             CustomIconButton(
               svgAssets: SvgAssets.google,
               onTap: () async {
-                print("---");
+                log("---");
                 BlocProvider.of<LoginCubit>(context).signInWithGoogle();
-                print("-+++-");
+                log("-+++-");
               },
             ),
             CustomIconButton(
               svgAssets: SvgAssets.facebook,
               onTap: () async {
-                print("face");
+                log("face");
                 BlocProvider.of<LoginCubit>(context).signInWithFacebook();
-                print("0000");
+                log("0000");
               },
             ),
           ],
