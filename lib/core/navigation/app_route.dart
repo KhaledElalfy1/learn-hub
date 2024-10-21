@@ -21,6 +21,7 @@ import 'package:learnhub/home/view_model/navigation_cubit/navigation_cubit.dart'
 
 import '../../features/course_details/presentation/pages/course_details_screen.dart';
 import '../../features/login/presentation/pages/login_screen.dart';
+import '../../features/forget-password/presentation/views/forget_password.dart';
 import '../../features/signup/presentation/pages/signup_screen.dart';
 
 class AppRoute {
@@ -39,7 +40,7 @@ class AppRoute {
           child: const SignupScreen(),
         ));
       case Routes.forgetPassword:
-        return _getScreen(const Scaffold());
+        return _getScreen(const ForgetPassword());
       case Routes.verifyOTP:
         return _getScreen(const Scaffold());
       case Routes.homeGetStartedUi:
