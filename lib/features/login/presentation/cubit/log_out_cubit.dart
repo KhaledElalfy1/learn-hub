@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:learnhub/core/managers/shared_perference_manager.dart';
 import 'log_out_state.dart';
 
 
@@ -19,21 +20,25 @@ class LogOutCubit extends Cubit<LogOutState> {
           switch (info.providerId) {
             case 'google.com':
             // تسجيل الخروج من Google
+            SharedPreferencesManager.preferences.clear();
               await GoogleSignIn().signOut();
               print("LogOut From Google Success");
               break;
             case 'facebook.com':
             // تسجيل الخروج من Facebook
+              SharedPreferencesManager.preferences.clear();
               await FacebookAuth.instance.logOut();
               print("LogOut From Facebook Success");
               break;
             case 'password':
             // تسجيل الخروج من FirebaseAuth (البريد الإلكتروني وكلمة المرور)
+              SharedPreferencesManager.preferences.clear();
               await FirebaseAuth.instance.signOut();
               print("LogOut From firebase Success");
               break;
             default:
             // تسجيل الخروج الافتراضي
+              SharedPreferencesManager.preferences.clear();
               await FirebaseAuth.instance.signOut();
           }
         }

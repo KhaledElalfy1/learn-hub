@@ -41,7 +41,5 @@ class _SplashViewState extends State<SplashPage> {
     } else {
       Navigator.pushReplacementNamed(context ,Routes.onboarding);
     }
-  
-
   }
 }

@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -21,7 +21,7 @@ class LoginCubit extends Cubit<LoginState> {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       // Save email and display name to SharedPreferences
       SharedPreferencesManager.setEmail(email);
-      _saveDisplayName();
+      saveDisplayName(_auth.currentUser!.displayName.toString());
       _saveDisplayImage();
       emit(SuccessLogin());
       // Navigate to home screen after successful login
@@ -30,7 +30,6 @@ class LoginCubit extends Cubit<LoginState> {
 
     }
   }
-
   Future<void> signInWithGoogle() async {
      emit(LoadingLogin());
     try {
@@ -46,7 +45,7 @@ class LoginCubit extends Cubit<LoginState> {
       );
 
       await _auth.signInWithCredential(credential);
-      _saveDisplayName();
+      saveDisplayName(_auth.currentUser!.displayName.toString());
       _saveDisplayImage();
       emit(SuccessLogin());
 
@@ -56,8 +55,6 @@ class LoginCubit extends Cubit<LoginState> {
       // CustomErrorWidget.showError(context, 'Error during Google sign-in: ${e.toString()}');
     }
   }
-
-
    Future<UserCredential> signInWithFacebook() async {
      emit(LoadingLogin());
     try {
@@ -81,12 +78,15 @@ class LoginCubit extends Cubit<LoginState> {
 
 
 
+  void updateName(String newName) {
+    SharedPreferencesManager.setName(newName);  // حفظ الاسم في SharedPreferences
+    emit(NameUpdated(newName:newName));  // تغيير الحالة للإعلام عن الاسم الجديد
+  }
 
 
 
-  static void _saveDisplayName() {
-    final String displayName = _auth.currentUser?.displayName ?? "Guest";
-    SharedPreferencesManager.setName(displayName);
+  static void saveDisplayName(String? name) {
+    SharedPreferencesManager.setName(name??"Guest");
   }
   static void _saveDisplayImage() {
     String userProfilePic  = _auth.currentUser?.photoURL??ImageAssets.accountProfile;

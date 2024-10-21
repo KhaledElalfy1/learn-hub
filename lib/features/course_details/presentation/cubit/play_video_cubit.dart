@@ -15,7 +15,7 @@ class PlayVideoCubit extends Cubit<PlayVideoState> {
 
   void _initializeVideo() {
     controller = VideoPlayerController.networkUrl(
-      Uri.parse('https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4'),
+      Uri.parse('https://www.shutterstock.com/shutterstock/videos/1097064289/preview/stock-footage-baby-happily-crawls-on-camera-on-eve-family-spending-winter-evening-at-home-young-mother-with.webm'),
       videoPlayerOptions: VideoPlayerOptions(allowBackgroundPlayback: true),
     );
     controller.initialize().then((_) => emit(PlayVideoInitial())); // emit عند الانتهاء من التهيئة

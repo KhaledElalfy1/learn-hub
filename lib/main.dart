@@ -13,6 +13,7 @@ import 'core/navigation/routes.dart';
 
 import 'features/course_details/presentation/cubit/play_video_cubit.dart';
 import 'features/courses/presentation/view_model/chosen_courses_cubit/chosen_courses_cubit.dart';
+import 'features/login/presentation/cubit/edit_account_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,7 @@ class LearnHub extends StatelessWidget {
         BlocProvider(create: (context) => LogOutCubit()),
         BlocProvider(create: (context) => SearchBarCubit()),
         BlocProvider(create: (context) => PlayVideoCubit()),
+        BlocProvider(create: (context) => EditAccountCubit()),
         BlocProvider(
           create: (context) => ChosenCoursesCubit()..selectIndex(0),
         ),

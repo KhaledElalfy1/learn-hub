@@ -8,17 +8,23 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          iconTheme: const IconThemeData(color: Colors.black),
-          title: const Text(
-            'Account',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+          leadingWidth: 130,
+          leading: const Align(
+            alignment: Alignment.center,
+            child: Text(
+
+              'Account',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: const AccountPageBody());
   }
