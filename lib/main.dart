@@ -5,14 +5,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
-import 'package:learnhub/features/forget-password/presentation/views/forget_password.dart';
 import 'package:learnhub/features/login/presentation/cubit/log_out_cubit.dart';
 import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
+import 'package:learnhub/features/login/presentation/pages/login_screen.dart';
 import 'package:learnhub/firebase_options.dart';
 import 'core/managers/shared_perference_manager.dart';
 import 'core/navigation/app_route.dart';
-import 'core/navigation/routes.dart';
-
 import 'features/course_details/presentation/cubit/play_video_cubit.dart';
 import 'features/courses/presentation/view_model/chosen_courses_cubit/chosen_courses_cubit.dart';
 
@@ -48,8 +46,8 @@ class LearnHub extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'LearnHub',
           // initialRoute: Routes.splash,
-          // onGenerateRoute: AppRoute.getRoute,
-          home: ForgetPassword(),
+          onGenerateRoute: AppRoute.getRoute,
+          home: LoginScreen(),
         ),
       ),
     );
