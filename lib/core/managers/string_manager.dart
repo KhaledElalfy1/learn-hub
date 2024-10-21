@@ -23,6 +23,10 @@ class StringManager {
   static String orLoginWith="or login with";
 
   static String onBoarding='onBoarding';
+  static String resetEmailSuccess='Reset email sent successfully!';
+  static String enterEmailToReset ='Enter your email to reset your password:';
+  static String sendResetEmail ='Send Reset Email';
+
 
   
 }

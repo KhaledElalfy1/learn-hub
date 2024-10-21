@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/managers/color_manager.dart';
 import 'package:learnhub/core/managers/style_manager.dart';
+import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/core/widgets/custom_primary_elevated_btn.dart';
 import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
 
@@ -73,7 +74,7 @@ class _LoginSectionState extends State<LoginSection> {
           SizeManager.s12.verticalSpace,
           CustomTextButton(
             text: StringManager.forgetPassword,
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, Routes.forgetPassword),
           ),
           SizeManager.s12.verticalSpace,
           CustomPrimaryElevatedBtn(

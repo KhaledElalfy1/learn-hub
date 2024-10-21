@@ -11,8 +11,8 @@ import '../components/course_details_top_area.dart';
 import '../components/play_video.dart';
 
 class CourseDetailsScreen extends StatefulWidget {
-  const CourseDetailsScreen({super.key, required CourseModel courseModel});
-
+  const CourseDetailsScreen({super.key, required this.courseModel,});
+  final CourseModel courseModel;
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
 }
@@ -42,18 +42,18 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
                     isVideo
                         ? const PlayVideo()
                         : CourseDetailsTopArea(
-                      courseName: course.title, // تعيين الـ title هنا
-                    )
+                            courseName: course.title, // تعيين الـ title هنا
+                          )
                   ],
                 ),
-                const CourseDetailsMainContainer()
+                 CourseDetailsMainContainer(courseModel: widget.courseModel,)
               ],
             );
           }
           return const CircularProgressIndicator(); // عرض مؤشر تحميل
         },
       ),
-      bottomNavigationBar: const CourseDetailsBottomNavigationBar(),
+      bottomNavigationBar:  CourseDetailsBottomNavigationBar(courseModel: widget.courseModel,),
     );
   }
 }

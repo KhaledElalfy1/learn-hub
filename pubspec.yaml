@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
+  cached_network_image: ^3.4.1
   carousel_slider: ^5.0.0
   connectivity_plus: ^6.0.5
   cupertino_icons: ^1.0.8
@@ -19,34 +20,44 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
-  fluttertoast: ^8.2.8
-  shimmer: ^3.0.0
-  flutter_svg: ^2.0.10+1
-  internet_connection_checker_plus: ^2.5.1
-  shared_preferences: ^2.3.2
-  hive: ^2.2.3
-  gradient_slider: ^1.0.2
-  smooth_page_indicator: ^1.2.0+3
+  flutter_dotenv: ^5.2.1
   flutter_facebook_auth: ^7.1.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_paypal_payment: ^1.0.6
   flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.10+1
+  fluttertoast: ^8.2.8
   get_it: ^8.0.0
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
+  gradient_slider: ^1.0.2
+  hive: ^2.2.3
+  internet_connection_checker_plus: ^2.5.1
   percent_indicator: ^4.2.3
   video_player:
   cached_network_image: ^3.4.1
   flutter_launcher_icons:
   image_picker: ^1.1.2
   youtube_player_flutter: ^9.1.1
+  quickalert: ^1.1.0
+  shared_preferences: ^2.3.2
+  shimmer: ^3.0.0
+  smooth_page_indicator: ^1.2.0+3
+  video_player: null
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.1
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
 
-flutter_icons:
+flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/images/appicon.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/appicon.png"
+  remove_alpha_ios: true
 
 flutter:
   uses-material-design: true
@@ -56,6 +67,9 @@ flutter:
     - assets/svg/
     - assets/fonts/
 
+=======
+flutter_intl:
+  enabled: true
 
 #  fonts:
 #    - family: poppins

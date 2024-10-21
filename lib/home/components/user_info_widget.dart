@@ -1,11 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/core/managers/shared_perference_manager.dart';
-import 'package:learnhub/features/login/presentation/cubit/login_state.dart';
 
 import '../../core/widgets/custom_user_image.dart';
-import '../../features/login/presentation/cubit/login_cubit.dart';
 
 
 class UserInfoWidget extends StatelessWidget {
@@ -41,6 +37,14 @@ class UserInfoWidget extends StatelessWidget {
                         color: Colors.white),
                   );
                 },
+             const SizedBox(height: 5,),
+              Text(
+                'Hi ,${SharedPreferencesManager.getName()}',
+                style: const TextStyle(
+                    fontSize: 23,
+                    overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               const Row(
                 children: [

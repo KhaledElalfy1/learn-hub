@@ -19,14 +19,18 @@ class _SplashViewState extends State<SplashPage> {
     super.initState();
     redirect();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
           height: double.infinity,
-          child: Image.asset(ImageAssets.splash,
-          fit: BoxFit.cover))
+          child: Image.asset(
+            ImageAssets.splash,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
@@ -34,12 +38,18 @@ class _SplashViewState extends State<SplashPage> {
   Future redirect() async {
     await Future.delayed(const Duration(seconds: 2));
     if (FirebaseAuth.instance.currentUser != null) {
-      Navigator.pushReplacementNamed(context , Routes.home);
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, Routes.home);
+      }
     } else if (SharedPreferencesManager.getData(
         key: StringManager.onBoarding)) {
-      Navigator.pushReplacementNamed(context ,Routes.login);
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, Routes.login);
+      }
     } else {
-      Navigator.pushReplacementNamed(context ,Routes.onboarding);
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, Routes.onboarding);
+      }
     }
   }
 }
