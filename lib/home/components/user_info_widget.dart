@@ -21,6 +21,22 @@ class UserInfoWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 5,),
+              BlocBuilder<LoginCubit, LoginState>(
+                builder: (context, state) {
+                  String name = SharedPreferencesManager.getName().toString();  // الاسم الافتراضي
+                  if (state is NameUpdated) {
+                    name = state.newName;  // استخدام الاسم الجديد إذا تم تحديثه
+                  }
+                  return Text(
+                    'Hi $name',
+                    style: const TextStyle(
+                        fontSize: 23,
+                        overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  );
+                },
              const SizedBox(height: 5,),
               Text(
                 'Hi ,${SharedPreferencesManager.getName()}',
@@ -35,9 +51,9 @@ class UserInfoWidget extends StatelessWidget {
                   Text(
                     'Let\'s learn new things',
                     style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,),
                   ),
                 ],
               )

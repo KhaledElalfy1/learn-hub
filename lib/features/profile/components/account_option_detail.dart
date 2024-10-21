@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/features/login/presentation/cubit/log_out_cubit.dart';
 import '../../../core/managers/shared_perference_manager.dart';
 import '../../../core/navigation/routes.dart';
+import '../../login/presentation/cubit/login_cubit.dart';
+import 'account_page_body.dart';
 
 class AccountOptionDetail extends StatefulWidget {
   const AccountOptionDetail({super.key});
@@ -17,7 +19,7 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
   Widget build(BuildContext context) {
     final List<String> accountOptions = [
       'Favourite',
-      'Edit Account',
+      'Edit Name',
       'Settings and Privacy',
       'Help',
       'Log Out'
@@ -31,17 +33,21 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
       Icons.logout
     ];
     Future<void> openEditDialog() async {
-      final TextEditingController textController = TextEditingController();
+      final TextEditingController textController = TextEditingController(
+        text: SharedPreferencesManager.getName(),
+      );
 
       return showDialog<void>(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Edit Account'),
-            content: TextField(
+            title: const Text('Edit'),
+            content: TextFormField(
               controller: textController,
-              decoration: const InputDecoration(hintText: 'Enter new Name'),
+              decoration:   InputDecoration(
+                  hintText: 'Edit your name',
+              ),
             ),
             actions: <Widget>[
               TextButton(
@@ -54,13 +60,17 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
               TextButton(
                 child: const Text('Save'),
                 onPressed: () {
-                  setState(() {
-                    // log(textController.text);
-                    // log(SharedPreferencesManager.getName().toString());
-                    SharedPreferencesManager.setName(textController.text);
-                    // log(SharedPreferencesManager.getName().toString());
-                  });
-                  Navigator.of(context).pop();
+                  final newName = textController.text;
+                  if (newName.isNotEmpty) {
+                    BlocProvider.of<LoginCubit>(context).updateName(newName);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Name updated successfully!'),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                    Navigator.of(context).pop();
+                  }
                 },
               ),
             ],
@@ -76,7 +86,7 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
           final option = accountOptions[index];
           final icon = icons[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            padding: const EdgeInsets.symmetric(vertical: 7.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -92,7 +102,7 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
                         padding: const EdgeInsets.all(0),
                         icon: Icon(
                           icon,
-                          color: Colors.grey,
+                          color: Colors.blue,
                         ),
                         onPressed: () {
                           openEditDialog();
@@ -103,11 +113,16 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
                                 padding: const EdgeInsets.all(0),
                                 icon: Icon(
                                   icon,
-                                  color: Colors.grey,
+                                  color: Colors.red,
                                 ),
                                 onPressed: () {
                                   BlocProvider.of<LogOutCubit>(context).signOut();
-                                  log('logout Success');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('logout done successfully!'),
+                                      backgroundColor: Colors.green,
+                                    ),
+                                  );
                                   Navigator.pushReplacementNamed(context, Routes.login);
                                 },
                               )
@@ -116,7 +131,7 @@ class _AccountOptionDetailState extends State<AccountOptionDetail> {
                             padding: const EdgeInsets.all(12.0),
                             child: Icon(
                               icon,
-                              color: Colors.grey,
+                              color: Colors.blue,
                             ),
                           )
               ],

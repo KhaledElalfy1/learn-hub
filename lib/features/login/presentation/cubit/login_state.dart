@@ -11,6 +11,15 @@ class FailureLogin extends LoginState{
   FailureLogin({required this.failureMessage});
 }
 
-class ImageLoading extends LoginState{}
-class ImageLoaded extends LoginState {}
-class ImageFailure extends LoginState {}
+// class ImageLoading extends LoginState{}
+// class ImageSuccessLoaded extends LoginState {}
+// class ImageFailure extends LoginState {
+//   final String failureMessage;
+//   ImageFailure({required this.failureMessage});
+// }
+
+class NameUpdated extends LoginState{
+  final String newName;
+  NameUpdated({required this.newName});
+}
+

@@ -32,18 +32,18 @@ class CourseProgressWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Learned today",
                   style: TextStyle(
-                      fontSize: SizeManager.s12,
+                      fontSize: SizeManager.s14,
                       color: ColorManager.lightGrey),
                 ),
-                SizedBox(width: 3,),
                 Text(
                   "My courses",
                   style: TextStyle(
-                      fontSize: SizeManager.s12, color: ColorManager.blue),
+                      fontSize: SizeManager.s14, color: ColorManager.blue),
                 ),
               ],
             ),
