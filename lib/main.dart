@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/services/services_locator.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
+import 'package:learnhub/features/forget-password/presentation/views/forget_password.dart';
 import 'package:learnhub/features/login/presentation/cubit/log_out_cubit.dart';
 import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
 import 'package:learnhub/firebase_options.dart';
@@ -44,8 +45,9 @@ class LearnHub extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'LearnHub',
-          initialRoute: Routes.splash,
-          onGenerateRoute: AppRoute.getRoute,
+          // initialRoute: Routes.splash,
+          // onGenerateRoute: AppRoute.getRoute,
+          home: ForgetPassword(),
         ),
       ),
     );
