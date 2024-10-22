@@ -1,10 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learnhub/core/managers/shared_perference_manager.dart';
-import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
-import 'package:learnhub/features/login/presentation/cubit/login_state.dart';
-
-import '../../core/widgets/custom_user_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learnhub/core/widgets/cached_profile_photo.dart';
 
 class UserInfoWidget extends StatelessWidget {
   const UserInfoWidget({
@@ -26,22 +23,15 @@ class UserInfoWidget extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              BlocBuilder<LoginCubit, LoginState>(
-                builder: (context, state) {
-                  String name = SharedPreferencesManager.getName()
-                      .toString(); // الاسم الافتراضي
-                  if (state is NameUpdated) {
-                    name = state.newName; // استخدام الاسم الجديد إذا تم تحديثه
-                  }
-                  return Text(
-                    'Hi $name',
-                    style: const TextStyle(
-                        fontSize: 23,
-                        overflow: TextOverflow.ellipsis,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  );
-                },
+              Text(
+                FirebaseAuth.instance.currentUser!.displayName!.isNotEmpty
+                    ? FirebaseAuth.instance.currentUser!.displayName!
+                    : 'Guest',
+                style: const TextStyle(
+                    fontSize: 23,
+                    overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               const SizedBox(
                 height: 5,
@@ -60,7 +50,11 @@ class UserInfoWidget extends StatelessWidget {
               )
             ],
           ),
-          const CustomUserImage()
+          CachedProfilePhoto(
+            hight: 50,
+            width: 50,
+            radius: 45.r,
+          ),
         ],
       ),
     );

@@ -5,5 +5,5 @@ final getIt = GetIt.instance;
 
 void setup() {
   getIt.registerSingleton<SignUpRepo>(SignUpRepo());
-
+  
 }

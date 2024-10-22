@@ -17,6 +17,7 @@ dependencies:
   dio: ^5.7.0
   firebase_auth: ^5.3.1
   firebase_core: ^3.6.0
+  firebase_storage: ^12.3.4
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -28,20 +29,21 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.10+1
   fluttertoast: ^8.2.8
+  gap: ^3.0.1
   get_it: ^8.0.0
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
   gradient_slider: ^1.0.2
   hive: ^2.2.3
+  image_picker: ^1.1.2
   internet_connection_checker_plus: ^2.5.1
   percent_indicator: ^4.2.3
-  video_player: # Remove 'null' value
-  image_picker: ^1.1.2
-  youtube_player_flutter: ^8.1.2
   quickalert: ^1.1.0
   shared_preferences: ^2.3.2
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.0+3
+  video_player: null
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.1
