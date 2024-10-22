@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/core/managers/shared_perference_manager.dart';
+import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
+import 'package:learnhub/features/login/presentation/cubit/login_state.dart';
 
 import '../../core/widgets/custom_user_image.dart';
-
 
 class UserInfoWidget extends StatelessWidget {
   const UserInfoWidget({
@@ -21,12 +23,15 @@ class UserInfoWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 5,
+              ),
               BlocBuilder<LoginCubit, LoginState>(
                 builder: (context, state) {
-                  String name = SharedPreferencesManager.getName().toString();  // الاسم الافتراضي
+                  String name = SharedPreferencesManager.getName()
+                      .toString(); // الاسم الافتراضي
                   if (state is NameUpdated) {
-                    name = state.newName;  // استخدام الاسم الجديد إذا تم تحديثه
+                    name = state.newName; // استخدام الاسم الجديد إذا تم تحديثه
                   }
                   return Text(
                     'Hi $name',
@@ -37,14 +42,9 @@ class UserInfoWidget extends StatelessWidget {
                         color: Colors.white),
                   );
                 },
-             const SizedBox(height: 5,),
-              Text(
-                'Hi ,${SharedPreferencesManager.getName()}',
-                style: const TextStyle(
-                    fontSize: 23,
-                    overflow: TextOverflow.ellipsis,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               const Row(
                 children: [
@@ -53,7 +53,8 @@ class UserInfoWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Colors.white,),
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               )
