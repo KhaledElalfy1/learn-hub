@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/managers/color_manager.dart';
 import 'package:learnhub/features/courses/presentation/data/course_model.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CourseCard extends StatelessWidget {
   const CourseCard({
@@ -32,6 +34,21 @@ class CourseCard extends StatelessWidget {
             height: 70.h,
             width: 70.w,
             color: const Color(0xffC4C4C4),
+            child: CachedNetworkImage(
+              fit: BoxFit.cover,
+              imageUrl: course.url,
+              progressIndicatorBuilder: (context, url, progress) =>
+                  Shimmer.fromColors(
+                baseColor: Colors.grey[100]!,
+                highlightColor: Colors.grey[200]!,
+                child: Container(
+                  height: 70.h,
+                  width: 70.w,
+                  color: const Color(0xffC4C4C4),
+                ),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
           ),
           SizedBox(
             width: 16.w,
