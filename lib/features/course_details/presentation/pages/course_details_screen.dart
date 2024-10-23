@@ -6,17 +6,12 @@ import '../components/course_details_bottom_navigation_bar.dart';
 import '../components/course_details_main_container.dart';
 import '../components/course_details_top_area.dart';
 
-class CourseDetailsScreen extends StatefulWidget {
+class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen({
     super.key,
     required this.courseModel,
   });
   final CourseModel courseModel;
-  @override
-  State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
-}
-
-class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,18 +21,18 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
           Stack(
             children: [
               CourseDetailsTopArea(
-                courseName: widget.courseModel.title,
-                url: widget.courseModel.url,
+                courseName: courseModel.title,
+                url: courseModel.url,
               )
             ],
           ),
           CourseDetailsMainContainer(
-            courseModel: widget.courseModel,
+            courseModel: courseModel,
           )
         ],
       ),
       bottomNavigationBar: CourseDetailsBottomNavigationBar(
-        courseModel: widget.courseModel,
+        courseModel: courseModel,
       ),
     );
   }

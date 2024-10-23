@@ -1,103 +1,58 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learnhub/core/managers/size_manager.dart';
+import 'package:learnhub/features/courses/presentation/data/course_model.dart';
+import 'package:learnhub/features/courses/presentation/view/widgets/course_card.dart';
+import 'package:learnhub/features/my_courses/presentation/model_view/get_bought_courses_cubit/get_bought_courses_cubit.dart';
 
 import '../../../../core/managers/color_manager.dart';
-import '../components/card_header.dart';
-import '../components/course_item.dart';
 
-class MyCoursesScreen extends StatelessWidget {
+class MyCoursesScreen extends StatefulWidget {
   const MyCoursesScreen({super.key});
-  final List<Course> generateDummyCourses = const [
-    Course(
-      title: 'Introduction to Flutter',
-      date: '09/24',
-      progress: 0.1,
-    ),
-    Course(
-      title: 'Version Control with Git',
-      date: '08/24',
-      progress: 0.2,
-    ),
-    Course(
-      title: 'UI/UX Design Principles',
-      date: '07/24',
-      progress: 0.3,
-    ),
-    Course(
-      title: 'Cloud Computing Basics',
-      date: '06/24',
-      progress: 0.4,
-    ),
-    Course(
-      title: 'Firebase Integration',
-      date: '05/24',
-      progress: 0.5,
-    ),
-    Course(
-      title: 'Building Responsive Apps',
-      date: '04/24',
-      progress: 0.6,
-    ),
-    Course(
-      title: 'Testing in Flutter',
-      date: '03/24',
-      progress: 0.7,
-    ),
-    Course(
-      title: 'Animations in Flutter',
-      date: '02/24',
-      progress: 0.8,
-    ),
-    Course(
-      title: 'Networking with APIs',
-      date: '01/24',
-      progress: 0.9,
-    ),
-    Course(
-      title: 'Deploying Flutter Apps',
-      date: '12/23',
-      progress: 1.0,
-    ),
-  ];
+
+  @override
+  State<MyCoursesScreen> createState() => _MyCoursesScreenState();
+}
+
+class _MyCoursesScreenState extends State<MyCoursesScreen> {
+  @override
+  void initState() {
+    GetBoughtCoursesCubit.get(context).getBoughtCourses();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.white,
-        body: Column(
-          children: [
-            const SizedBox(height: 20),
-            const CardHeader(),
-            SizeManager.s20.verticalSpace,
-            Expanded(
-              child: GridView.builder(
-                padding: EdgeInsets.symmetric(horizontal: SizeManager.s8.w),
-                itemBuilder: (context, index) => CourseItem(
-                  index: index,
-                  course: generateDummyCourses[index],
-                ),
-                itemCount: generateDummyCourses.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 223.h,
-                  mainAxisSpacing: 16.h,
-                  crossAxisSpacing: 14.w,
-                ),
-              ),
-            ),
-          ],
+        body: StreamBuilder<QuerySnapshot>(
+          stream: GetBoughtCoursesCubit.get(context).collectionStream,
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return const Text('Something went wrong');
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            return ListView(
+              children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                Map<String, dynamic> data =
+                    document.data() as Map<String, dynamic>;
+                final courses = CourseModel.fromFirebase(data);
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CourseCard(course: courses),
+                );
+              }).toList(),
+            );
+          },
         ),
       ),
     );
   }
-}
-
-class Course {
-  final String title;
-  final String date;
-  final double progress; // Progress ratio between 0 and 1
-
-  const Course(
-      {required this.title, required this.date, required this.progress});
 }
