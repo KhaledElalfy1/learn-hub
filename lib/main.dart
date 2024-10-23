@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/navigation/routes.dart';
 import 'package:learnhub/core/services/services_locator.dart';
+import 'package:learnhub/features/course_details/presentation/cubit/add_bought_course_to_firebase_cubit.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
 import 'package:learnhub/features/login/presentation/cubit/log_out_cubit.dart';
 import 'package:learnhub/features/login/presentation/cubit/login_cubit.dart';
@@ -34,6 +35,7 @@ class LearnHub extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => AddBoughtCourseToFirebaseCubit()),
         BlocProvider(create: (context) => LogOutCubit()),
         BlocProvider(create: (context) => SearchBarCubit()),
         BlocProvider(create: (context) => PlayVideoCubit()),
