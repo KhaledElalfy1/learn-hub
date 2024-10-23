@@ -7,10 +7,10 @@ class CoursesAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-     const   Text(
+        const Text(
           'Course',
           style: TextStyle(
             fontSize: 26,
@@ -18,10 +18,10 @@ class CoursesAppBar extends StatelessWidget {
           ),
         ),
         CachedProfilePhoto(
-                        hight: 100,
-                        width: 100,
-                        radius: 45.r,
-                      ),
+          hight: 50,
+          width: 50,
+          radius: 45.r,
+        ),
       ],
     );
   }
