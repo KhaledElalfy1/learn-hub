@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnhub/features/courses/presentation/view/courses_view.dart';
+import 'package:learnhub/features/my_courses/presentation/model_view/get_bought_courses_cubit/get_bought_courses_cubit.dart';
 import 'package:learnhub/features/my_courses/presentation/pages/my_courses_screen.dart';
 import 'package:learnhub/features/profile/presentation/controller/update_name_cubit/update_name_cubit.dart';
 import 'package:learnhub/features/profile/presentation/controller/update_new_image_cubit/update_new_image_cubit.dart';
@@ -18,7 +19,10 @@ class NavigationCubit extends Cubit<NavigationState> {
     const WelcomeScreen(),
     const CoursesView(),
     const SearchPage(),
-    const MyCoursesScreen(),
+    BlocProvider(
+      create: (context) => GetBoughtCoursesCubit()..getBoughtCourses(),
+      child: const MyCoursesScreen(),
+    ),
     MultiBlocProvider(
       providers: [
         BlocProvider(

@@ -53,7 +53,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               CustomNavigationDestination(
                   disabledIcon: Icons.donut_large_outlined,
                   selectedIcon: Icons.donut_large,
-                  label: 'Progress'),
+                  label: 'My Courses'),
               CustomNavigationDestination(
                   disabledIcon: Icons.person_outlined,
                   selectedIcon: Icons.person,
