@@ -9,6 +9,7 @@ import 'package:learnhub/features/courses/presentation/view/widgets/courses_cate
 import 'package:learnhub/features/courses/presentation/view/widgets/custom_search_bar_widget.dart';
 import 'package:learnhub/features/courses/presentation/view/widgets/sliver_sized_box.dart';
 import 'package:learnhub/features/courses/presentation/view_model/chosen_courses_cubit/chosen_courses_cubit.dart';
+import 'package:learnhub/features/courses/presentation/view_model/chosen_courses_cubit/chosen_courses_state.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_cubit.dart';
 import 'package:learnhub/features/courses/presentation/view_model/search_bar_cubit/search_bar_state.dart';
 
@@ -27,12 +28,16 @@ class CoursesView extends StatelessWidget {
                 child: CoursesAppBar(),
               ),
               SliverSizedBox(height: 16.h),
-              SliverSizedBox(
-                child: CustomSearchBarWidget(
-                  courses: ChosenCoursesCubit.get(context).courseChosenMap[
-                      ChosenCoursesCubit.get(context).courseChosen[
-                          ChosenCoursesCubit.get(context).selectedIndex]],
-                ),
+              BlocBuilder<ChosenCoursesCubit, ChosenCoursesState>(
+                builder: (context, state) {
+                  return SliverSizedBox(
+                    child: CustomSearchBarWidget(
+                      courses: ChosenCoursesCubit.get(context).courseChosenMap[
+                          ChosenCoursesCubit.get(context).courseChosen[
+                              ChosenCoursesCubit.get(context).selectedIndex]],
+                    ),
+                  );
+                },
               ),
               SliverSizedBox(height: 34.h),
               const CoursesCategoriesListView(),

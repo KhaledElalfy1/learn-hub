@@ -6,17 +6,23 @@ import 'package:learnhub/core/managers/asset_manager.dart';
 import 'package:learnhub/core/widgets/shimmer_custom_loading.dart';
 
 class CachedProfilePhoto extends StatelessWidget {
-  const CachedProfilePhoto({super.key, required this.radius, required this.hight, required this.width});
+  const CachedProfilePhoto(
+      {super.key,
+      required this.radius,
+      required this.hight,
+      required this.width,
+      this.photoUrl});
   final double radius;
   final double hight;
   final double width;
+  final String? photoUrl;
   @override
   Widget build(BuildContext context) {
     return ClipOval(
       child: CachedNetworkImage(
-        height:hight ,
+        height: hight,
         width: width,
-        imageUrl: FirebaseAuth.instance.currentUser!.photoURL??'https://firebasestorage.googleapis.com/v0/b/test-e61aa.appspot.com/o/profilePictures%2F1720077983517?alt=media&token=d2f652b0-94c0-4a1a-95e3-138c8f40cba8',
+        imageUrl: photoUrl ?? FirebaseAuth.instance.currentUser!.photoURL!,
         placeholder: (context, url) => ShimmerCustomLoading(radius: radius),
         errorWidget: (context, url, error) =>
             SvgPicture.asset(SvgAssets.profile),

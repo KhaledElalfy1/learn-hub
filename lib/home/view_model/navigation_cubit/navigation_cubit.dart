@@ -16,7 +16,10 @@ class NavigationCubit extends Cubit<NavigationState> {
       BlocProvider.of<NavigationCubit>(context);
   int index = 0;
   List<Widget> screens = [
-    const WelcomeScreen(),
+    BlocProvider(
+      create: (context) => UpdateNewImageCubit(),
+      child: const WelcomeScreen(),
+    ),
     const CoursesView(),
     const SearchPage(),
     BlocProvider(

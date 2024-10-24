@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/widgets/cached_profile_photo.dart';
+import 'package:learnhub/features/profile/presentation/controller/update_new_image_cubit/update_new_image_cubit.dart';
+import 'package:learnhub/features/profile/presentation/controller/update_new_image_cubit/update_new_image_state.dart';
 
 class UserInfoWidget extends StatelessWidget {
   const UserInfoWidget({
