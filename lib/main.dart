@@ -44,8 +44,8 @@ class LearnHub extends StatelessWidget {
           create: (context) => ChosenCoursesCubit()..selectIndex(0),
         ),
       ],
-      child:const ScreenUtilInit(
-        designSize:  Size(375, 812),
+      child: const ScreenUtilInit(
+        designSize: Size(375, 812),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'LearnHub',
@@ -55,8 +55,6 @@ class LearnHub extends StatelessWidget {
       ),
     );
   }
-
-  
 }
 /**
  * 

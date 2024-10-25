@@ -24,9 +24,9 @@ class UserInfoWidget extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                FirebaseAuth.instance.currentUser!.displayName!.isNotEmpty
-                    ? FirebaseAuth.instance.currentUser!.displayName!
-                    : 'Guest',
+               
+                     FirebaseAuth.instance.currentUser!.displayName??
+                     'Guest',
                 style: const TextStyle(
                     fontSize: 23,
                     overflow: TextOverflow.ellipsis,
