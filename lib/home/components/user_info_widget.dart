@@ -1,11 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnhub/core/widgets/cached_profile_photo.dart';
-import 'package:learnhub/features/profile/presentation/controller/update_new_image_cubit/update_new_image_cubit.dart';
-import 'package:learnhub/features/profile/presentation/controller/update_new_image_cubit/update_new_image_state.dart';
 
 class UserInfoWidget extends StatelessWidget {
   const UserInfoWidget({
@@ -28,9 +24,9 @@ class UserInfoWidget extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                FirebaseAuth.instance.currentUser!.displayName!.isNotEmpty
-                    ? FirebaseAuth.instance.currentUser!.displayName!
-                    : 'Guest',
+               
+                     FirebaseAuth.instance.currentUser!.displayName??
+                     'Guest',
                 style: const TextStyle(
                     fontSize: 23,
                     overflow: TextOverflow.ellipsis,

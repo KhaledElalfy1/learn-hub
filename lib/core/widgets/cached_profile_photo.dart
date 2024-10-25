@@ -10,19 +10,17 @@ class CachedProfilePhoto extends StatelessWidget {
       {super.key,
       required this.radius,
       required this.hight,
-      required this.width,
-      this.photoUrl});
+      required this.width,});
   final double radius;
   final double hight;
   final double width;
-  final String? photoUrl;
   @override
   Widget build(BuildContext context) {
     return ClipOval(
       child: CachedNetworkImage(
         height: hight,
         width: width,
-        imageUrl: photoUrl ?? FirebaseAuth.instance.currentUser!.photoURL!,
+        imageUrl: FirebaseAuth.instance.currentUser!.photoURL??'https://firebasestorage.googleapis.com/v0/b/learn-hub-a4a08.appspot.com/o/profilePictures%2F1729786085321?alt=media&token=6d3090d8-8e97-4192-969d-2565a96a25e1',
         placeholder: (context, url) => ShimmerCustomLoading(radius: radius),
         errorWidget: (context, url, error) =>
             SvgPicture.asset(SvgAssets.profile),
